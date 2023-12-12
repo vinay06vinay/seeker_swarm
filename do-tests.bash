@@ -28,7 +28,7 @@ colcon test
 ##############################
 # 3. get return status  (none-zero will cause the script to exit)
 ##############################
-colcon test-result --test-result-base build/my_controller
+colcon test-result --test-result-base build/SeekerSwarm
 
 ##############################
 # 4. generate individual coverage reports:
@@ -39,10 +39,10 @@ colcon build \
        --packages-select my_model \
        --cmake-target "test_coverage" \
        --cmake-arg -DUNIT_TEST_ALREADY_RAN=1
-MY_MODEL_COVERAGE_INFO=./build/my_model/test_coverage.info
+MY_MODEL_COVERAGE_INFO=./build/SeekerSwarm/test_coverage.info
 ## 4.2 my_controller:
-ros2 run my_controller generate_coverage_report.bash
-MY_CONTROLLER_COVERAGE_INFO=./build/my_controller/test_coverage.info
+#ros2 run my_controller generate_coverage_report.bash
+#MY_CONTROLLER_COVERAGE_INFO=./build/my_controller/test_coverage.info
 
 ##############################
 # 5. Combine coverage reports

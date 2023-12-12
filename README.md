@@ -1,111 +1,98 @@
 # Seeker Swarm
+[![Coverage Report](https://codecov.io/gh/vinay06vinay/SeekerSwarm/branch/phase1/graph/badge.svg)](https://codecov.io/gh/vinay06vinay/SeekerSwarm)
+[![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Build Status](https://github.com/vinay06vinay/SeekerSwarm/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)](https://github.com/vinay06vinay/SeekerSwarm/actions/workflows/run-unit-test-and-upload-codecov.yml)
 
-[![codecov](https://codecov.io/gh/TommyChangUMD/ENPM808X-final-project-boilerplate/branch/main/graph/badge.svg?token=KRAHD3BZP7)](https://codecov.io/gh/TommyChangUMD/ENPM808X-final-project-boilerplate)
+## Overview
 
-![CICD Workflow status](https://github.com/TommyChangUMD/ENPM808X-final-project-boilerplate/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)
+Perception, Planning, and Controls are the three main components of any autonomous robotics system. Together, these parts enable the robot to see its surroundings, make judgments based on those perceptions, and carry out those decisions to accomplish the objective. In the ever-evolving landscape of warehouse management, the need for efficient and intelligent solutions has become paramount. In collaboration with Acme Robotics, we embark on a groundbreaking project to enhance their warehouse operations through the implementation of a multi-robot swarm system. This project aims to leverage the power of the Robot Operating System (ROS) to develop a sophisticated swarm of more than 20 TurtleBots capable of autonomously locating misplaced and valuable items within the warehouse. We plan to simulate the functionality in Gazebo and RViz before the deployment in the actual warehouse environment.
 
-This repo provides a template for setting up:
+## Method
 
-  - GitHub CI
-    - "main" branch runs in a ROS 2 Humble container
-  - Codecov badges
-  - Colcon workspace structure
-  - C++ library that depends on other system libraries such as OpenCV and rclcpp.
-    - The library is *self-contained*
-    - In real life, we download source code of third-party modules all
-      the time and often just stick the modules as-is into our colcon
-      workspace.
-  - ROS 2 package that depends on a C++ library built in the same colcon workspace
-  - Establishing package dependency within the colcon workspace.
-    - ie. the ROS 2 package will not be built before all of its dependent C++ libraries are built first
-  - Multiple subscriptions within a ROS2 node all listening to the same topic.
-    - Only one callback function is needed.
-    - More efficient than to have N callback functions.
-    - More efficient than to have N ROS nodes.
-  - Unit test and integration test.
-  - Doxygen setup
-  - ROS2 launch file
-  - Bash scripts that can be invoked by the "ros2 run ..." command
-  
-## How to generate package dependency graph
+To implement the module to create a collaborative obstacle free environment for a group of swarm robots to avoid obstacles:
+1. Firstly, all the turtlebots are deployed at different initial locations in the warehouse space. Once the bots are deployed, each turtlebot starts a search operation around some specified radius to look for the lost item.
+2. Every turtlebot scans the Aruco marker present on the lost item which is unique for each good in the warehouse/ utilizes the camera to scan for the item using opencv.
+3. While each turtlebot starts exploring, SLAM is utilized to localize it and avoid dynamic obstacles such as other turtlebots. It can also be used to generate both local and global maps of the environment for better optimization which is an ambitious goal for the project. 
+4. If any of the turtlebots find the lost item, its coordinates are reported to the operator and other turtlebots. All the turtlebots move back to their original stations.
 
-``` bash
-colcon graph --dot | dot -Tpng -o depGraph.png
-open depGraph.png
-```
-[<img src=screenshots/depGraph.png
-    width="20%" 
-    style="display: block; margin: 0 auto"
-    />](screenshots/depGraph.png)
+## Potential Risks
+- **Dynamic Obstacle Avoidance**: As this is a multi robot environment each robot has to generate a path or search avoiding dynamic obstacles which could mainly be humans or other robots. To mitigate this we plan to study different planning algorithms available with the navigation package and choose the efficient one. Also, we would like to improve the robots localization through efficient SLAM implementation
 
 
+## Activity Diagram
 
-## How to build and run demo
+<p align="center">
+<img width="30%" alt="Activity Diagram" src="UML/Phase1/activity_diagram_initial.png">
+</p>
 
+## Team 
+
+1. Neha Nitin Madhekar - Master of Engineering in Robotics - [Github](https://github.com/NehaMadhekar09)
+2. Rashmi Kapu - Master of Engineering in Robotics - [Github](https://github.com/Rashmikapu)
+3. Vinay Krishna Bukka - Master of Engineering in Robotics - [Github](https://github.com/vinay06vinay)
+
+## Phase 0:
+In phase 0 we have started with high level design and made a detailed proposal on the goals to be achieved according to the requirements of Acme Robotics.  
+
+## Phase 1:
+
+The details regarding the phase 1 process and implementation are clearly explained through a video which can be accessed through this [link](https://drive.google.com/drive/folders/1owMT9tn0x96qVgPtxg-muGZPfwGxZB40?usp=sharing)
+- The proposal document and Quad Chart can be found [here](/proposal%20documents)
+- The Initial UML Diagrams are found [here](/UML/Phase1/uml_initial.pdf)
+
+#### Software Practices: 
+The phase is implemented using Agile Iterative Process with a 2 week sprint and also following pair programming. Please find the links below for detailed tasks:
+1. [AIP Sheet](https://docs.google.com/spreadsheets/d/1NuIYBbttIKkYBfBp62UK6V-b4JHCreupMbSnzMCKfyM/edit?usp=sharing)
+2. [Sprint Meeting Notes](https://docs.google.com/document/d/1hmF4FdUW7u_yZcx7FMOXFj-bEJ_aklQrRSQUA3DLxTc/edit?usp=sharing)
+
+
+## Code Build Procedure
+Follow the below procedure to download the code and start building
 ```bash
-rm -rf build/ install/
-colcon build 
-source install/setup.bash
-ros2 launch my_controller run_demo.launch.py
+# Source to ros humble
+source /opt/ros/humble/setup.bash
+# Go to the source directory of your ros2 workspace
+cd ~/ros2_ws/src
+git clone https://github.com/vinay06vinay/SeekerSwarm.git
+# Go to the directory where the folder is downloaded
+cd SeekerSwarm
+# Once files are checked, go back to the root directory of ros workspace
+cd ..
+# Install rosdep dependencies before building the package
+rosdep install -i --from-path src --rosdistro humble -y
+# Build the package using colcon build
+colcon build --packages-select SeekerSwarm
+# After successfull build source the package
+. install/setup.bash
 ```
 
-## How to build for tests (unit test and integration test)
-
+## Method to Run Unit Tests
 ```bash
-rm -rf build/ install/
-colcon build --cmake-args -DCOVERAGE=1 
+# How to build for tests (unit test and integration test)
+  rm -rf build/ install/
+  colcon build --cmake-args -DCOVERAGE=1 
+# How to run tests (unit and integration)
+  source install/setup.bash
+  colcon test
 ```
 
-## How to run tests (unit and integration)
+## Method to Generate Coverage Reports
 
+``` bash
+ros2 run SeekerSwarm generate_coverage_report.bash
+```
+### CppCheck & CppLint
 ```bash
-source install/setup.bash
-colcon test
+# Use the below command for cpp check by moving to directory beginner_tutorials
+cppcheck --enable=all --std=c++17 --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^(./build/|./install/|./log/)" ) --check-config  &> results/cppcheck.txt
+
+# Use the below command for cpp lint by moving to directory beginner_tutorials 
+cpplint  --filter=-build/c++11,+build/c++17,-build/namespaces,-build/include_order $( find . -name *.cpp | grep -vE -e "^(./build/|./install/|./log/)" ) &> results/cpplint.txt 
+
+## The results of both are present in results folder insider beginner_tutorials directory
 ```
 
-## How to generate coverage reports after running colcon test
+## LICENSE
 
-First make sure we have run the unit test already.
+This project is open source and is released under the Apache License 2.0. You are free to use, modify, and distribute the code in accordance with the terms of the Apache License 2.0.
 
-```bash
-colcon test
-```
-
-### Test coverage report for `my_controller`:
-
-``` bash
-ros2 run my_controller generate_coverage_report.bash
-open build/my_controller/test_coverage/index.html
-```
-
-### Test coverage report for `my_model`:
-
-``` bash
-colcon build \
-       --event-handlers console_cohesion+ \
-       --packages-select my_model \
-       --cmake-target "test_coverage" \
-       --cmake-arg -DUNIT_TEST_ALREADY_RAN=1
-open build/my_model/test_coverage/index.html
-```
-
-### combined test coverage report
-
-``` bash
-./do-tests.bash
-```
-
-## How to generate project documentation
-``` bash
-./do-docs.bash
-```
-
-## How to use GitHub CI to upload coverage report to Codecov
-
-### First, sign up Codecov with you GitHub account.
-
-  https://about.codecov.io/sign-up/
-
-### Then, follow the similar instruction provided in the cpp-boilerplate-v2 repo
-
-  https://github.com/TommyChangUMD/cpp-boilerplate-v2
