@@ -25,23 +25,14 @@ set -u                          # re-enable undefined variable check
 ###############################
 colcon build \
        --event-handlers console_cohesion+ \
-       --packages-select my_model \
+       --packages-select SeekerSwarm \
        --cmake-target "docs"
 ##echo "open src/my_model/docs/html/index.html"
 
 ###############################
-# 3. run my_controller's "docs" target
-###############################
-colcon build \
-       --event-handlers console_cohesion+ \
-       --packages-select my_controller \
-       --cmake-target "docs"
-##echo "open src/my_controller/docs/html/index.html"
-
-###############################
 # 4. combine all docs
 ###############################
-DOCS_DIR=src/docs/
-pandoc -f markdown $DOCS_DIR/index.md > $DOCS_DIR/index.html
-open $DOCS_DIR/index.html || true
+#DOCS_DIR=src/docs/
+#pandoc -f markdown $DOCS_DIR/index.md > $DOCS_DIR/index.html
+#open $DOCS_DIR/index.html || true
 
