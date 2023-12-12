@@ -47,7 +47,7 @@ class RobotSwarm : public rclcpp::Node {
 
     // creates 2 hz timer and ties the callback function
     timer_ = this->create_wall_timer(
-        500ms, std::bind(&RobotSwarm::timer_callback, this));
+        std::chrono::milliseconds(500), std::bind(&RobotSwarm::timer_callback, this));
   }
 
   // id
