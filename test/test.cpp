@@ -7,29 +7,34 @@
 #include <std_msgs/msg/string.hpp>
 
 
-class TestNode : public testing::Test {
- protected:
+// class TestNode : public testing::Test {
+//  protected:
+//   rclcpp::Node::SharedPtr node1_;
+//   rclcpp::Node::SharedPtr node2_;
+// };
+class TestNode : public testing::TestWithParam<int> {
+  // Your test fixture code here
+public:
   rclcpp::Node::SharedPtr node1_;
   rclcpp::Node::SharedPtr node2_;
 };
 
-
-TEST_P(TestNode, test_for_publisher) {
+TEST_F(TestNode, test_for_publisher) {
   node1_ = std::make_shared<rclcpp::Node>("test_publisher");
   auto test_publisher =
-      node1_->create_publisher<std_msgs::msg::String>(topicName, 10);
-  auto publishers_number = node1_->count_publishers(topicName);
-  EXPECT_EQ(4, static_cast<int>(publishers_number));
+      node1_->create_publisher<std_msgs::msg::String>("topic", 10);
+  auto publishers_number = node1_->count_publishers("topic");
+  EXPECT_EQ(3, static_cast<int>(publishers_number));
 }
 
-TEST_S(TestNode, test_for_subscriber) {
+TEST_F(TestNode, test_for_subscriber) {
   node2_ = std::make_shared<rclcpp::Node>("test_subscriber");
   
   // Subscribe to the topic with a callback function
   auto subscription = node2_->create_subscription<std_msgs::msg::String>(
-      topicName,
+      "topic",
       10,
-      [this, topicName](const std_msgs::msg::String::SharedPtr msg) {
+      [this](const std_msgs::msg::String::SharedPtr msg) {
         // Check if the received message is not null
         ASSERT_NE(nullptr, msg);
       });

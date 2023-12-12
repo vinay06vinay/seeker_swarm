@@ -26,7 +26,7 @@ endif()
 
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
-  ament_add_gtest(${PROJECT_NAME}_test test/basic_test.cpp)
+  ament_add_gtest(${PROJECT_NAME}_test test/test.cpp)
   target_include_directories(${PROJECT_NAME}_test PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
@@ -87,10 +87,10 @@ doxygen_add_docs(docs           # target name
   )
 
 # Add executables:
-add_executable(talker
-  src/publisher_member_function.cpp)
-add_executable(listener
-  src/subscriber_member_function.cpp)
+#add_executable(talker
+#  src/publisher_member_function.cpp)
+#add_executable(listener
+# src/subscriber_member_function.cpp)
   
 add_executable(robotswarm
   src/node_robot_swarm.cpp)
@@ -100,13 +100,13 @@ add_executable(lostparts
   src/node_lost_parts.cpp)
 
 # Add executable dependencis:
-ament_target_dependencies(talker
-  rclcpp std_msgs)
+#ament_target_dependencies(talker
+#  rclcpp std_msgs)
 #target_link_libraries(talker 
 #  my_model)
 
-ament_target_dependencies(listener
-  rclcpp std_msgs)
+#ament_target_dependencies(listener
+#  rclcpp std_msgs)
 
 #target_link_libraries(listener
 #  my_model)
@@ -125,8 +125,6 @@ ament_target_dependencies(lostparts
 
 # Install executables:
 install(TARGETS
-  talker
-  listener
   robotswarm
   warehousehead
   lostparts

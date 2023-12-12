@@ -1,3 +1,14 @@
+/*
+ * @file node_warehouse_head.cpp
+ * @brief This file contains the implementation of the WarehouseHead class
+ * @author Neha Nitin Madhekar,Vinay Krishna Bukka, Rashmi Kapu
+ * @date 2023
+ * @copyright Open Source Robotics Foundation, Inc.
+ * @license Apache License, Version 2.0
+ *    (you may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0)
+ *
+ */
 #include <rclcpp/logging.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
