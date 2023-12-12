@@ -25,7 +25,7 @@ set -u                          # re-enable undefined variable check
 ###############################
 colcon build \
        --event-handlers console_cohesion+ \
-       --packages-select SeekerSwarm \
+       --packages-select seeker_swarm \
        --cmake-target "docs"
 ##echo "open src/my_model/docs/html/index.html"
 
