@@ -1,0 +1,42 @@
+[0.009s] Invoking command in '/home/neha/ros2_ws/src/SeekerSwarm/build/SeekerSwarm': CMAKE_PREFIX_PATH=/home/neha/ros2_ws/install/walker_bot:/home/neha/ros2_ws/install/learning_tf2_cpp:/home/neha/ros2_ws/install/beginner_tutorials:/opt/ros/humble:/home/neha/catkin_ws/devel /usr/bin/cmake /home/neha/ros2_ws/src/SeekerSwarm -DCMAKE_INSTALL_PREFIX=/home/neha/ros2_ws/src/SeekerSwarm/install/SeekerSwarm
+[0.037s] -- The C compiler identification is GNU 11.4.0
+[0.067s] -- The CXX compiler identification is GNU 11.4.0
+[0.071s] -- Detecting C compiler ABI info
+[0.108s] -- Detecting C compiler ABI info - done
+[0.114s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.114s] -- Detecting C compile features
+[0.114s] -- Detecting C compile features - done
+[0.116s] -- Detecting CXX compiler ABI info
+[0.160s] -- Detecting CXX compiler ABI info - done
+[0.164s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.164s] -- Detecting CXX compile features
+[0.165s] -- Detecting CXX compile features - done
+[0.168s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.266s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[0.327s] -- Found rclcpp: 16.0.5 (/opt/ros/humble/share/rclcpp/cmake)
+[0.362s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.366s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.373s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.384s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.398s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.448s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.451s] -- Found rmw_fastrtps_cpp: 6.2.3 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.513s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.531s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.564s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.572s] -- Looking for pthread.h
+[0.610s] -- Looking for pthread.h - found
+[0.610s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.652s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.652s] -- Found Threads: TRUE  
+[0.751s] [31mCMake Error at /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+[0.751s]   Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE)
+[0.751s] Call Stack (most recent call first):
+[0.751s]   /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:594 (_FPHSA_FAILURE_MESSAGE)
+[0.751s]   /usr/share/cmake-3.22/Modules/FindDoxygen.cmake:646 (find_package_handle_standard_args)
+[0.751s]   CMakeLists.txt:14 (find_package)
+[0.752s] 
+[0.752s] [0m
+[0.752s] -- Configuring incomplete, errors occurred!
+[0.752s] See also "/home/neha/ros2_ws/src/SeekerSwarm/build/SeekerSwarm/CMakeFiles/CMakeOutput.log".
+[0.756s] Invoked command in '/home/neha/ros2_ws/src/SeekerSwarm/build/SeekerSwarm' returned '1': CMAKE_PREFIX_PATH=/home/neha/ros2_ws/install/walker_bot:/home/neha/ros2_ws/install/learning_tf2_cpp:/home/neha/ros2_ws/install/beginner_tutorials:/opt/ros/humble:/home/neha/catkin_ws/devel /usr/bin/cmake /home/neha/ros2_ws/src/SeekerSwarm -DCMAKE_INSTALL_PREFIX=/home/neha/ros2_ws/src/SeekerSwarm/install/SeekerSwarm
