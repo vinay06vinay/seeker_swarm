@@ -15,32 +15,30 @@
 
 // #include "my_dummy_lib_funct2.hpp"
 
-using namespace std::chrono_literals;
+// using namespace std::chrono_literals;
 
 /* This example creates a subclass of Node and uses std::bind() to register a
  * member function as a callback from the timer. */
 
-using STRING    = std_msgs::msg::String;
+using STRING = std_msgs::msg::String;
 using PUBLISHER = rclcpp::Publisher<STRING>::SharedPtr;
-using TIMER     = rclcpp::TimerBase::SharedPtr;
+using TIMER = rclcpp::TimerBase::SharedPtr;
 
 /**
  * @class LostParts
- * @brief The LostParts class represents a ROS 2 node for monitoring and reporting lost parts.
+ * @brief The LostParts class represents a ROS 2 node for monitoring and
+ * reporting lost parts.
  *
  */
-class LostParts: public rclcpp::Node {
-public:
-/**
+class LostParts : public rclcpp::Node {
+ public:
+  /**
    * @brief Constructor for LostParts class.
    *
-   * Initializes the LostParts node, creates a publisher, and sets up a timer with
-   * a callback function.
+   * Initializes the LostParts node, creates a publisher, and sets up a timer
+   * with a callback function.
    */
-  LostParts()
-    : Node("LostPart"),
-    count_(0)
-  {
+  LostParts() : Node("LostPart"), count_(0) {
     // define topic name
     auto topicName = "topic";
 
@@ -48,35 +46,33 @@ public:
     publisher_ = this->create_publisher<STRING>(topicName, 10);
 
     // creates 2 hz timer and ties the callback function
-    timer_ =
-      this->create_wall_timer(
-        500ms,
-        std::bind(&LostParts::timer_callback, this));
+    timer_ = this->create_wall_timer(
+        500ms, std::bind(&LostParts::timer_callback, this));
   }
 
   // position
   // status
 
-private:
+ private:
   //  Dummy Variables that will be removed later
-  size_t    count_;
+  size_t count_;
   PUBLISHER publisher_;
-  TIMER     timer_;
+  TIMER timer_;
 
-/**
+  /**
    * @brief Timer callback function.
    *
-   * This function is called at regular intervals by the timer. It creates a STRING message,
-   * updates the count_, logs a message, and publishes the message.
+   * This function is called at regular intervals by the timer. It creates a
+   * STRING message, updates the count_, logs a message, and publishes the
+   * message.
    */
-  void timer_callback()
-  {
+  void timer_callback() {
     // Create the message to publish
     auto message = STRING();
 
     message.data = "Lost Parts Node Called" + std::to_string(count_++);
-    RCLCPP_INFO_STREAM (this->get_logger(),
-                        "Publishing: " << " " << message.data.c_str());
+    RCLCPP_INFO_STREAM(this->get_logger(), "Publishing: "
+                                               << " " << message.data.c_str());
 
     // Publish the message
     publisher_->publish(message);
@@ -92,8 +88,7 @@ private:
  * @param argv Array of command-line arguments.
  * @return Exit code.
  */
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   rclcpp::init(argc, argv);
 
   rclcpp::spin(std::make_shared<LostParts>());

@@ -1,0 +1,6 @@
+cpplint --filter="-legal/copyright" $( find . -name "*.cpp" | grep -vE -e "^./build/" )
+Done processing ./src/node_lost_parts.cpp
+Done processing ./src/node_robot_swarm.cpp
+Done processing ./src/node_warehouse_head.cpp
+Done processing ./test/test.cpp
+
