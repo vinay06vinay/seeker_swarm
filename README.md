@@ -77,7 +77,6 @@ colcon build --packages-select SeekerSwarm
 ```
 
 ## Method to Generate Coverage Reports
-
 ``` bash
 ros2 run SeekerSwarm generate_coverage_report.bash
 ```
