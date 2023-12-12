@@ -37,7 +37,7 @@ In phase 0 we have started with high level design and made a detailed proposal o
 ## Phase 1:
 
 The details regarding the phase 1 process and implementation are clearly explained through a video which can be accessed through this [link](https://drive.google.com/drive/folders/1owMT9tn0x96qVgPtxg-muGZPfwGxZB40?usp=sharing)
-- The proposal document and Quad Chart can be found [here](/proposal%20documents)
+- The proposal document and Quad Chart can be found [here](/proposal_documents)
 - The Initial UML Diagrams are found [here](/UML/Phase1/uml_initial.pdf)
 
 #### Software Practices: 
