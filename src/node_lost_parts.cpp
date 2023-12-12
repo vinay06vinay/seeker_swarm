@@ -24,9 +24,19 @@ using STRING    = std_msgs::msg::String;
 using PUBLISHER = rclcpp::Publisher<STRING>::SharedPtr;
 using TIMER     = rclcpp::TimerBase::SharedPtr;
 
+/**
+ * @class LostParts
+ * @brief The LostParts class represents a ROS 2 node for monitoring and reporting lost parts.
+ *
+ */
 class LostParts: public rclcpp::Node {
 public:
-
+/**
+   * @brief Constructor for LostParts class.
+   *
+   * Initializes the LostParts node, creates a publisher, and sets up a timer with
+   * a callback function.
+   */
   LostParts()
     : Node("LostPart"),
     count_(0)
@@ -53,7 +63,12 @@ private:
   PUBLISHER publisher_;
   TIMER     timer_;
 
-
+/**
+   * @brief Timer callback function.
+   *
+   * This function is called at regular intervals by the timer. It creates a STRING message,
+   * updates the count_, logs a message, and publishes the message.
+   */
   void timer_callback()
   {
     // Create the message to publish
@@ -68,6 +83,15 @@ private:
   }
 };
 
+/**
+ * @brief Main function to run the LostParts node.
+ *
+ * Initializes ROS 2, spins the LostParts node, and shuts down ROS 2 on exit.
+ *
+ * @param argc Number of command-line arguments.
+ * @param argv Array of command-line arguments.
+ * @return Exit code.
+ */
 int main(int argc, char *argv[])
 {
   rclcpp::init(argc, argv);

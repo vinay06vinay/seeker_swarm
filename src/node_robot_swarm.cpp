@@ -24,9 +24,20 @@ using STRING    = std_msgs::msg::String;
 using PUBLISHER = rclcpp::Publisher<STRING>::SharedPtr;
 using TIMER     = rclcpp::TimerBase::SharedPtr;
 
+/**
+ * @class RobotSwarm
+ * @brief The RobotSwarm class represents a ROS 2 node for managing a swarm of robots.
+ *
+ */
 class RobotSwarm: public rclcpp::Node {
 public:
 
+/**
+   * @brief Constructor for RobotSwarm class.
+   *
+   * Initializes the RobotSwarm node, creates a publisher, and sets up a timer with
+   * a callback function.
+   */
   RobotSwarm()
     : Node("RobotSwarm"),
     count_(0)
@@ -47,7 +58,7 @@ public:
   // id
 
 private:
-
+    // Placeholder member variables for future functionalities
     // current_position
     // home_position
     // alert_status
@@ -57,7 +68,12 @@ private:
   PUBLISHER publisher_;
   TIMER     timer_;
 
-
+/**
+   * @brief Timer callback function.
+   *
+   * This function is called at regular intervals by the timer. It creates a STRING message,
+   * updates the count_, logs a message, and publishes the message.
+   */
   void timer_callback()
   {
     // Create the message to publish
@@ -70,11 +86,41 @@ private:
     // Publish the message
     publisher_->publish(message);
   }
+
+   /**
+   * @brief Move to a specific position.
+   *
+   * Placeholder method for moving the robot to a specific position.
+   * Implementation details can be added later.
+   */
   void MovotoPosition(){}
+
+  /**
+   * @brief Search for a path.
+   *
+   * Placeholder method for searching a path for the robot.
+   * Implementation details can be added later.
+   */
   void SearchPath(){}
+
+  /**
+   * @brief Alert when a part is found.
+   *
+   * Placeholder method for alerting when a part is found.
+   * Implementation details can be added later.
+   */
   void AlertPartFound(){}
 };
 
+/**
+ * @brief Main function to run the RobotSwarm node.
+ *
+ * Initializes ROS 2, spins the RobotSwarm node, and shuts down ROS 2 on exit.
+ *
+ * @param argc Number of command-line arguments.
+ * @param argv Array of command-line arguments.
+ * @return Exit code.
+ */
 int main(int argc, char *argv[])
 {
   rclcpp::init(argc, argv);

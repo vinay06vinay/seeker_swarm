@@ -24,9 +24,19 @@ using STRING    = std_msgs::msg::String;
 using PUBLISHER = rclcpp::Publisher<STRING>::SharedPtr;
 using TIMER     = rclcpp::TimerBase::SharedPtr;
 
+/**
+ * @class WarehouseHead
+ * @brief The WarehouseHead class represents a ROS 2 node for warehouse head operations.
+ *
+ */
 class WarehouseHead: public rclcpp::Node {
 public:
-
+   /**
+   * @brief Constructor for WarehouseHead class.
+   *
+   * Initializes the WarehouseHead node, creates a publisher, and sets up a timer with
+   * a callback function.
+   */
   WarehouseHead()
     : Node("WarehouseHead"),
     count_(0)
@@ -53,7 +63,12 @@ private:
   PUBLISHER publisher_;
   TIMER     timer_;
 
-
+/**
+   * @brief Timer callback function.
+   *
+   * This function is called at regular intervals by the timer. It creates a STRING message,
+   * updates the count_, logs a message, and publishes the message.
+   */
   void timer_callback()
   {
     // Create the message to publish
@@ -66,9 +81,24 @@ private:
     // Publish the message
     publisher_->publish(message);
   }
+  /**
+   * @brief Placeholder for a method to receive alerts.
+   *
+   * This method is a placeholder for a future functionality to receive alerts.
+   * It can be expanded as needed.
+   */
   void Receive_Alert(){}
 };
 
+/**
+ * @brief Main function to run the WarehouseHead node.
+ *
+ * Initializes ROS 2, spins the WarehouseHead node, and shuts down ROS 2 on exit.
+ *
+ * @param argc Number of command-line arguments.
+ * @param argv Array of command-line arguments.
+ * @return Exit code.
+ */
 int main(int argc, char *argv[])
 {
   rclcpp::init(argc, argv);
