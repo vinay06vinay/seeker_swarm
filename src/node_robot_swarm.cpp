@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <geometry_msgs/msg/transform_stamped.hpp>
@@ -6,8 +5,12 @@
 #include <geometry_msgs/msg/quaternion.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <nav_msgs/msg/odometry.hpp>
-#include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/bool.hpp>
+#include <sensor_msgs/msg/image.hpp>
+#include <cv_bridge/cv_bridge.h>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <std_msgs/msg/string.hpp>
 #include <string>
 #include <utility>
 #include "tf2/LinearMath/Matrix3x3.h"
@@ -40,6 +43,7 @@ class Robot : public rclcpp::Node {
 
     auto command_topic_name = "/" + m_robot_name + "/cmd_vel";
     auto pose_topic_name = "/" + m_robot_name + "/odom";
+    auto detection_topic_name = "/" + m_robot_name + "/camera/image_raw";
 
     RCLCPP_INFO_STREAM(this->get_logger(), "Robot Constructor");
     m_publisher_cmd_vel = this->create_publisher<geometry_msgs::msg::Twist>(
@@ -51,6 +55,13 @@ class Robot : public rclcpp::Node {
             pose_topic_name, 10,
             std::bind(&Robot::robot_pose_callback, this,
                       std::placeholders::_1));
+    m_subscriber_image =
+        this->create_subscription<sensor_msgs::msg::Image>(
+            detection_topic_name, 10,
+            std::bind(&Robot::imageCallback, this,
+                      std::placeholders::_1));
+
+    // red_publisher_ = this->create_publisher<std_msgs::msg::String>("/red_object_detected", 10);
     // Call on_timer function 5 times per second
     m_go_to_goal_timer = this->create_wall_timer(
         std::chrono::milliseconds(static_cast<int>(1000.0 / 1)),
@@ -160,6 +171,41 @@ class Robot : public rclcpp::Node {
     
       }
 
+    void imageCallback(const sensor_msgs::msg::Image::SharedPtr msg)
+    {
+        cv_bridge::CvImagePtr cv_ptr;
+
+        try
+        {
+            cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+            cv::Mat hsv_image;
+            cv::cvtColor(cv_ptr->image, hsv_image, cv::COLOR_BGR2HSV);
+
+            // Define the range of red color in HSV
+            cv::Scalar lower_red(0, 100, 100);
+            cv::Scalar upper_red(10, 255, 255);
+
+            // Threshold the HSV image to get only red colors
+            cv::Mat red_mask;
+            cv::inRange(hsv_image, lower_red, upper_red, red_mask);
+
+            // Check if any red pixels are present
+            if (cv::countNonZero(red_mask) > 0)
+            {
+                RCLCPP_INFO(this->get_logger(), "Red object detected!");
+                std_msgs::msg::String msg;
+                // msg.data = "Red object detected!";
+                // red_publisher_->publish(msg);
+            }
+        }
+        catch (cv_bridge::Exception& e)
+        {
+            RCLCPP_ERROR(this->get_logger(), "cv_bridge exception: %s", e.what());
+            return;
+        }
+    }
+
+
       geometry_msgs::msg::Quaternion m_orientation;
 
       private:
@@ -182,6 +228,8 @@ class Robot : public rclcpp::Node {
         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr m_publisher_cmd_vel;
         rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr m_goal_reached_publisher;
         rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr m_subscriber_robot3_pose;
+        rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr m_subscriber_image;
+        // rclcpp::Publisher<std_msgs::msg::String>::SharedPtr red_publisher_;
         std::pair<double, double> m_location;
         //   geometry_msgs::msg::Quaternion m_orientation;
         rclcpp::TimerBase::SharedPtr m_go_to_goal_timer;

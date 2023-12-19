@@ -19,6 +19,8 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(cv_bridge REQUIRED)
+find_package(image_transport REQUIRED)
 find_package(ament_cmake_gtest)
 # find_package(my_model REQUIRED) # add my_model
 
@@ -128,7 +130,7 @@ ament_target_dependencies(warehousehead
   rclcpp std_msgs)
 
 ament_target_dependencies(main_f 
-  tf2 tf2_ros rclcpp std_msgs sensor_msgs geometry_msgs nav_msgs)
+  tf2 tf2_ros rclcpp std_msgs sensor_msgs geometry_msgs nav_msgs cv_bridge image_transport)
 
 ament_target_dependencies(lostparts
   rclcpp std_msgs)
