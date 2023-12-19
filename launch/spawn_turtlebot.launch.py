@@ -50,8 +50,8 @@ def generate_launch_description():
     ld.add_action(declare_x_position_cmd)
     ld.add_action(declare_y_position_cmd)
     count=10
-    x_val_pose = [0.0,-10.0,-10.0,10.0,10.0,10.0,0.0,10.0,30.0,5.0]
-    y_val_pose = [0.0,-1.0,-5.0,1.0,3.0,-2.0,-15.0,-20.0,0.0,-10.0]
+    x_val_pose = [-3.0,-10.0,-10.0,7.0,10.0,10.0,0.0,10.0,30.0,5.0]
+    y_val_pose = [5.0,-1.0,-5.0,2.0,3.0,-1.0,-15.0,-20.0,0.0,-10.0]
     for i in range(count):
         robot_name = "robot_" + str(i)
         x_val = str(float(x_val_pose[i]))
