@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
   std::mt19937 gen(rd());
 
 // Define the distribution for real numbers between 0 and 1
-  std::uniform_real_distribution<double> distribution(0.1, 1.0);
+  std::uniform_real_distribution<double> distribution(0.1, 0.6);
 
 // Generate a random number
 

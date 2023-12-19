@@ -254,7 +254,7 @@ class Robot : public rclcpp::Node {
                     double area = cv::contourArea(contour);
 
                     // Set your desired contour area threshold
-                    double contourAreaThreshold = 80000.0; // Adjust as needed
+                    double contourAreaThreshold = 50000.0; // Adjust as needed
 
                     // Check if the contour area exceeds the threshold
                     if (area > contourAreaThreshold)
