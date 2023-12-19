@@ -147,6 +147,8 @@ install(TARGETS
 install(DIRECTORY
   launch
   worlds
+  models
+  urdf
   DESTINATION share/${PROJECT_NAME}
 )
 
