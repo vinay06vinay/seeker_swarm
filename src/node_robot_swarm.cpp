@@ -60,14 +60,29 @@ class Robot : public rclcpp::Node {
             detection_topic_name, 10,
             std::bind(&Robot::imageCallback, this,
                       std::placeholders::_1));
-
-    // red_publisher_ = this->create_publisher<std_msgs::msg::String>("/red_object_detected", 10);
+    m_subscriber_move_flag =
+        this->create_subscription<std_msgs::msg::Bool>(
+            "/red_object_detected", 10,
+            std::bind(&Robot::move_flag_callback, this,
+                      std::placeholders::_1));
+    m_red_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/red_object_detected", 10);
     // Call on_timer function 5 times per second
     m_go_to_goal_timer = this->create_wall_timer(
         std::chrono::milliseconds(static_cast<int>(1000.0 / 1)),
         std::bind(&Robot::go_to_goal_callback, this), m_cbg);
         }
+    void move_flag_callback(const std_msgs::msg::Bool::SharedPtr msg)
+      {
+          // Implementation of the callback method
+          global_move_flag = true;
+          if (global_move_flag)
+          {
+              RCLCPP_INFO(this->get_logger(), "Received true from /red_object_detected. Start moving!");
+              // Implement your logic for moving the robot
+              // global_move_flag = true;
 
+          }
+      }
 
     void set_goal(double x, double y) {
       m_go_to_goal = true;
@@ -161,8 +176,11 @@ class Robot : public rclcpp::Node {
           angular_z = std::min(angular_z, m_angular_speed);
         else
           angular_z = std::max(angular_z, -m_angular_speed);
-
+        if(global_move_flag == false){
         move(linear_x, angular_z);
+        } else{
+          move(0.0, 0.0);
+        }
       } else {
         RCLCPP_INFO_STREAM(this->get_logger(),
                           "********** Goal reached **********");
@@ -188,15 +206,49 @@ class Robot : public rclcpp::Node {
             // Threshold the HSV image to get only red colors
             cv::Mat red_mask;
             cv::inRange(hsv_image, lower_red, upper_red, red_mask);
+            // Find contours in the binary image
+            std::vector<std::vector<cv::Point>> contours;
+            cv::findContours(red_mask, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+            for (const auto& contour : contours)
+                {
+                    // Calculate the area of the contour
+                    double area = cv::contourArea(contour);
 
+                    // Set your desired contour area threshold
+                    double contourAreaThreshold = 80000.0; // Adjust as needed
+
+                    // Check if the contour area exceeds the threshold
+                    if (area > contourAreaThreshold)
+                    {
+                        // Draw the contour on the original image
+                        // cv::drawContours(cv_ptr->image, std::vector<std::vector<cv::Point>>{contour}, -1, cv::Scalar(0, 255, 0), 2);
+
+                        // Display a message
+                        RCLCPP_INFO(this->get_logger(), "Contour area: %s", std::to_string(area).c_str());
+                        RCLCPP_INFO(this->get_logger(), "Red object detected with a large enough area!");
+
+                        // Stop further processing or add your desired logic here
+
+                        // For example, you can publish a message or set a flag to stop processing
+                        std_msgs::msg::Bool move_flag_local;
+                        move_flag_local.data = true;
+                        // move(0, 0);
+                        m_red_publisher_->publish(move_flag_local);
+                        // msg.data = "Red object detected with a large enough area!";
+                        // red_publisher_->publish(msg);
+
+                        // You might want to add a break here to exit the loop if you only want to consider the first contour
+                        // break;
+                    }
+                }
             // Check if any red pixels are present
-            if (cv::countNonZero(red_mask) > 0)
-            {
-                RCLCPP_INFO(this->get_logger(), "Red object detected!");
-                std_msgs::msg::String msg;
-                // msg.data = "Red object detected!";
-                // red_publisher_->publish(msg);
-            }
+            // if (cv::countNonZero(red_mask) > 0)
+            // {
+            //     RCLCPP_INFO(this->get_logger(), "Red object detected!");
+            //     std_msgs::msg::String msg;
+            //     // msg.data = "Red object detected!";
+            //     // red_publisher_->publish(msg);
+            // }
         }
         catch (cv_bridge::Exception& e)
         {
@@ -222,6 +274,7 @@ class Robot : public rclcpp::Node {
         double m_goal_x;
         double m_goal_y;
         double m_distance_to_goal;
+        bool global_move_flag{false};
 
         rclcpp::CallbackGroup::SharedPtr m_cbg;
         rclcpp::TimerBase::SharedPtr m_timer;
@@ -229,12 +282,12 @@ class Robot : public rclcpp::Node {
         rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr m_goal_reached_publisher;
         rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr m_subscriber_robot3_pose;
         rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr m_subscriber_image;
-        // rclcpp::Publisher<std_msgs::msg::String>::SharedPtr red_publisher_;
+        rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr m_subscriber_move_flag;
+        rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr m_red_publisher_;
         std::pair<double, double> m_location;
         //   geometry_msgs::msg::Quaternion m_orientation;
         rclcpp::TimerBase::SharedPtr m_go_to_goal_timer;
 };
-
 
 
 
