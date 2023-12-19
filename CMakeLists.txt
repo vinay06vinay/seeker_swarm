@@ -133,6 +133,7 @@ install(TARGETS
 # install launch files
 install(DIRECTORY
   launch
+  worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
