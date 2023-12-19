@@ -18,7 +18,9 @@
 #include "tf2/exceptions.h"
 #include "tf2_ros/buffer.h"
 #include "tf2_ros/transform_listener.h"
+#include <sensor_msgs/msg/laser_scan.hpp>
 
+using std::placeholders::_1;
 
 
 class Robot : public rclcpp::Node {
@@ -40,10 +42,11 @@ class Robot : public rclcpp::Node {
     auto current_location = std::make_pair(3.0, 0.0);
     m_location = current_location;
     m_cbg = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-
+    obstacle = false;
     auto command_topic_name = "/" + m_robot_name + "/cmd_vel";
     auto pose_topic_name = "/" + m_robot_name + "/odom";
     auto detection_topic_name = "/" + m_robot_name + "/camera/image_raw";
+    auto lidar_topic_name = "/" + m_robot_name + "/scan";
 
     RCLCPP_INFO_STREAM(this->get_logger(), "Robot Constructor");
     m_publisher_cmd_vel = this->create_publisher<geometry_msgs::msg::Twist>(
@@ -55,6 +58,10 @@ class Robot : public rclcpp::Node {
             pose_topic_name, 10,
             std::bind(&Robot::robot_pose_callback, this,
                       std::placeholders::_1));
+
+    m_lidar_sub = this->create_subscription<sensor_msgs::msg::LaserScan>(
+      lidar_topic_name, 10, std::bind(&Robot::lidar_callback, this, _1));
+
     m_subscriber_image =
         this->create_subscription<sensor_msgs::msg::Image>(
             detection_topic_name, 10,
@@ -104,6 +111,31 @@ class Robot : public rclcpp::Node {
       if (result < 0) return result + 2.0 * M_PI;
       return result;
     }
+
+    void lidar_callback(const sensor_msgs::msg::LaserScan& msg) {
+    // if (msg.header.stamp.sec == 0) {
+    //   return;
+    // }
+      auto scan_data = msg.ranges;
+
+    // Setting field of view = -50 to +50 degrees
+      int min_angle = 330;
+      int max_angle = 60;
+      auto threshold = 1.5;
+      for (int i = min_angle; i < min_angle + max_angle; i++) {
+        if (scan_data[i % 360] < threshold) {
+          // turn
+          RCLCPP_INFO_STREAM(this->get_logger(),
+                          "********** Obstacle**********");
+          obstacle = true;
+        } else {
+          // move forward
+          RCLCPP_INFO_STREAM(this->get_logger(),
+                          "********** No obstacle**********");
+          obstacle = false;
+        }
+      }
+  }
 
     double compute_distance(const std::pair<double, double> &a,
                                const std::pair<double, double> &b) {
@@ -172,12 +204,19 @@ class Robot : public rclcpp::Node {
 
         // proportional control for angular velocity
         double angular_z = m_kh * w;
-        if (angular_z > 0)
-          angular_z = std::min(angular_z, m_angular_speed);
-        else
-          angular_z = std::max(angular_z, -m_angular_speed);
+        if (this->obstacle==false){
+          if (angular_z > 0)
+            angular_z = std::min(angular_z, m_angular_speed);
+          else
+            angular_z = std::max(angular_z, -m_angular_speed);
+        }
+        else{
+          linear_x = 0;
+          angular_z = 3.14/2;
+        }
+
         if(global_move_flag == false){
-        move(linear_x, angular_z);
+          move(linear_x, angular_z);
         } else{
           move(0.0, 0.0);
         }
@@ -275,6 +314,7 @@ class Robot : public rclcpp::Node {
         double m_goal_y;
         double m_distance_to_goal;
         bool global_move_flag{false};
+        bool obstacle;
 
         rclcpp::CallbackGroup::SharedPtr m_cbg;
         rclcpp::TimerBase::SharedPtr m_timer;
@@ -284,6 +324,7 @@ class Robot : public rclcpp::Node {
         rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr m_subscriber_image;
         rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr m_subscriber_move_flag;
         rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr m_red_publisher_;
+        rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr m_lidar_sub;
         std::pair<double, double> m_location;
         //   geometry_msgs::msg::Quaternion m_orientation;
         rclcpp::TimerBase::SharedPtr m_go_to_goal_timer;
