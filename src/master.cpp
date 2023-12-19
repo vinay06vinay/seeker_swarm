@@ -15,18 +15,18 @@ using ODOM = nav_msgs::msg::Odometry;
 using RCL_NODE_PTR = std::shared_ptr<rclcpp::Node>;
 
 
-class Master : public rclcpp::Node {
+class SwarmMaster : public rclcpp::Node {
  private:
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<TWIST>::SharedPtr publisher_;  // Change to publish to custom robot array
-  std::vector<std::shared_ptr<Robot>> robot_array;
+  std::vector<std::shared_ptr<RobotSwarm>> robot_array;
   int nodes;
 
  public:
-  Master(std::vector<std::shared_ptr<Robot>> const &robot_array, int nodes): Node("master_node") {
+  SwarmMaster(std::vector<std::shared_ptr<RobotSwarm>> const &robot_array, int nodes): Node("master_node") {
         this->robot_array = robot_array;
         this->nodes = nodes;
-        auto processCallback = std::bind(&Master::process_callback, this);
+        auto processCallback = std::bind(&SwarmMaster::process_callback, this);
         this->timer_ = this->create_wall_timer(100ms, processCallback);
         this->move(10.0);
     }

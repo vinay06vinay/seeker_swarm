@@ -23,10 +23,10 @@
 using std::placeholders::_1;
 
 
-class Robot : public rclcpp::Node {
+class RobotSwarm : public rclcpp::Node {
  public:
-  Robot(std::string node_name, std::string robot_name, bool navigate = false,
-        double linear_speed = 1.0, double angular_speed = 0.5)
+  RobotSwarm(std::string node_name, std::string robot_name, bool navigate = false,
+        double linear_speed = 1.0, double angular_speed = 0.0)
       : Node(node_name),
         robot_name_curr{robot_name},
         navigate_curr{navigate},
@@ -48,7 +48,7 @@ class Robot : public rclcpp::Node {
     auto detection_topic_name = "/" + robot_name_curr + "/camera/image_raw";
     auto lidar_topic_name = "/" + robot_name_curr + "/scan";
 
-    RCLCPP_INFO_STREAM(this->get_logger(), "Robot Constructor");
+    RCLCPP_INFO_STREAM(this->get_logger(), "RobotSwarm Constructor");
     vel_publisher_curr = this->create_publisher<geometry_msgs::msg::Twist>(
         command_topic_name, 10);
     goal_pub =
@@ -56,27 +56,27 @@ class Robot : public rclcpp::Node {
     robot_pose_curr =
         this->create_subscription<nav_msgs::msg::Odometry>(
             pose_topic_name, 10,
-            std::bind(&Robot::robot_pose_callback, this,
+            std::bind(&RobotSwarm::robot_pose_callback, this,
                       std::placeholders::_1));
 
     lidar_sub_curr = this->create_subscription<sensor_msgs::msg::LaserScan>(
-      lidar_topic_name, 10, std::bind(&Robot::lidar_callback, this, _1));
+      lidar_topic_name, 10, std::bind(&RobotSwarm::lidar_callback, this, _1));
 
     cam_sub_curr =
         this->create_subscription<sensor_msgs::msg::Image>(
             detection_topic_name, 10,
-            std::bind(&Robot::imageCallback, this,
+            std::bind(&RobotSwarm::imageCallback, this,
                       std::placeholders::_1));
     subscriber_move_flag =
         this->create_subscription<std_msgs::msg::Bool>(
             "/red_object_detected", 10,
-            std::bind(&Robot::move_flag_callback, this,
+            std::bind(&RobotSwarm::move_flag_callback, this,
                       std::placeholders::_1));
     common_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/red_object_detected", 10);
     // Call on_timer function 5 times per second
     navigate_curr_timer = this->create_wall_timer(
         std::chrono::milliseconds(static_cast<int>(1000.0 / 1)),
-        std::bind(&Robot::navigate_callback, this), callback_grp);
+        std::bind(&RobotSwarm::navigate_callback, this), callback_grp);
         }
     void move_flag_callback(const std_msgs::msg::Bool::SharedPtr msg)
       {
@@ -121,7 +121,7 @@ class Robot : public rclcpp::Node {
     // Setting field of view = -50 to +50 degrees
       int min_angle = 330;
       int max_angle = 60;
-      auto threshold = 1.5;
+      auto threshold = 2.0;
       for (int i = min_angle; i < min_angle + max_angle; i++) {
         if (scan_data[i % 360] < threshold) {
           // turn
@@ -302,15 +302,13 @@ class Robot : public rclcpp::Node {
 
       private:
         // attributes
-        std::string robot_name_curr;  // robot name used for creating namespace
-        bool navigate_curr;         // flag to store if the robot has reached position
-        double linear_speed_curr;     // base linear velocity of robot
-        double angular_speed_curr;    // base angular velocity of robot
-        double roll_curr;             // rad
-        double pitch_curr;            // rad
-        double yaw_curr;              // rad
-        double Kv;               // gain for linear velocity
-        double Kh;               // gain for angular velocity
+        std::string robot_name_curr;  
+        bool navigate_curr;         
+        double linear_speed_curr;    
+        double angular_speed_curr; 
+        double yaw_curr;  
+        double roll_curr;            
+        double pitch_curr;                        
         double goal_curr_x;
         double goal_curr_y;
         double m_distance_to_goal;

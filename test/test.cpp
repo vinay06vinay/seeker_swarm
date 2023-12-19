@@ -3,7 +3,7 @@
 
 class RobotTest : public testing::Test {
  protected:
-  std::shared_ptr<Robot> robot;
+  std::shared_ptr<RobotSwarm> robot;
   // std::shared_ptr<Master> master;
 };
 
@@ -25,11 +25,11 @@ TEST_F(RobotTest, slave_spawn_testing_publishers) {
   int nodes = 10;
   int pub_count = 0;
   rclcpp::executors::MultiThreadedExecutor exec;
-  std::vector<std::shared_ptr<Robot>> robot_array;
+  std::vector<std::shared_ptr<RobotSwarm>> robot_array;
   for (int i = 0; i < nodes; i++) {
     auto r_namespace = "robot_" + std::to_string(i);
     auto nodename = "robot_" + std::to_string(i) + "_controller";
-    auto robot = std::make_shared<Robot>(nodename, r_namespace);
+    auto robot = std::make_shared<RobotSwarm>(nodename, r_namespace);
     exec.add_node(robot);
     robot_array.push_back(robot);
   }
@@ -70,7 +70,7 @@ TEST_F(RobotTest, euclid_dist) {
   int n = 1;
   auto r_namespace = "robot_" + std::to_string(n);
   auto nodename = "robot_" + std::to_string(n) + "_controller";
-  robot = std::make_shared<Robot>(nodename, r_namespace);
+  robot = std::make_shared<RobotSwarm>(nodename, r_namespace);
   std::pair<double, double> goal{10.0, 10.0};
   std::pair<double, double> loc{0.0, 0.0};
   double distance = robot->euclid_dist(loc, goal);
@@ -83,7 +83,7 @@ TEST_F(RobotTest, angle_resize) {
   int n = 1;
   auto r_namespace = "robot_" + std::to_string(n);
   auto nodename = "robot_" + std::to_string(n) + "_controller";
-  robot = std::make_shared<Robot>(nodename, r_namespace);
+  robot = std::make_shared<RobotSwarm>(nodename, r_namespace);
   double angle = robot->angle_resize(-10.14);
   double ex = 2.42637;
   EXPECT_NEAR(ex, angle, 0.1);
@@ -94,7 +94,7 @@ TEST_F(RobotTest, test_angle_resize_positive) {
   int n = 1;
   auto r_namespace = "robot_" + std::to_string(n);
   auto nodename = "robot_" + std::to_string(n) + "_controller";
-  robot = std::make_shared<Robot>(nodename, r_namespace);
+  robot = std::make_shared<RobotSwarm>(nodename, r_namespace);
   double angle = robot->angle_resize_positive(-7.29);
   double ex = 5.2763;
   EXPECT_NEAR(ex, angle, 0.1);
@@ -105,7 +105,7 @@ TEST_F(RobotTest, yaw) {
   int n = 1;
   auto r_namespace = "robot_" + std::to_string(n);
   auto nodename = "robot_" + std::to_string(n) + "_controller";
-  robot = std::make_shared<Robot>(nodename, r_namespace);
+  robot = std::make_shared<RobotSwarm>(nodename, r_namespace);
   robot->m_orientation.x = 3.0;
   robot->m_orientation.y = 5.0;
   robot->m_orientation.z = 4.0;
@@ -118,7 +118,7 @@ TEST_F(RobotTest, yaw) {
 TEST_F(RobotTest, num_publishers) {
   auto r_namespace = "robot_" + std::to_string(1);
   auto nodename = "robot_" + std::to_string(1) + "_controller";
-  robot = std::make_shared<Robot>(nodename, r_namespace);
+  robot = std::make_shared<RobotSwarm>(nodename, r_namespace);
 
   auto number_of_publishers =
       robot->count_publishers("/" + r_namespace + "/cmd_vel");

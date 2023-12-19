@@ -97,43 +97,13 @@ doxygen_add_docs(docs           # target name
   )
 
 # Add executables:
-#add_executable(talker
-#  src/publisher_member_function.cpp)
-#add_executable(listener
-# src/subscriber_member_function.cpp)
-  
-# add_executable(robotswarm
-#   src/node_robot_swarm.cpp)
-add_executable(warehousehead
-  src/node_warehouse_head.cpp)
-add_executable(lostparts
-  src/node_lost_parts.cpp)
 add_executable(main_f
   src/main.cpp src/master.cpp src/node_robot_swarm.cpp)
 
 # Add executable dependencis:
-#ament_target_dependencies(talker
-#  rclcpp std_msgs)
-#target_link_libraries(talker 
-#  my_model)
-
-#ament_target_dependencies(listener
-#  rclcpp std_msgs)
-
-#target_link_libraries(listener
-#  my_model)
-
-# ament_target_dependencies(robotswarm
-#   rclcpp std_msgs)
-  
-ament_target_dependencies(warehousehead
-  rclcpp std_msgs)
-
 ament_target_dependencies(main_f 
   tf2 tf2_ros rclcpp std_msgs sensor_msgs geometry_msgs nav_msgs cv_bridge image_transport)
 
-ament_target_dependencies(lostparts
-  rclcpp std_msgs)
 ###################################
 # Installation
 ###################################
@@ -141,8 +111,6 @@ ament_target_dependencies(lostparts
 # Install executables:
 install(TARGETS
   main_f
-  warehousehead
-  lostparts
   DESTINATION lib/${PROJECT_NAME})
 
 # install launch files
