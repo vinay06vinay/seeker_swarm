@@ -25,58 +25,58 @@ using std::placeholders::_1;
 
 class Robot : public rclcpp::Node {
  public:
-  Robot(std::string node_name, std::string robot_name, bool go_to_goal = false,
+  Robot(std::string node_name, std::string robot_name, bool navigate = false,
         double linear_speed = 1.0, double angular_speed = 0.5)
       : Node(node_name),
-        m_robot_name{robot_name},
-        m_go_to_goal{go_to_goal},
-        m_linear_speed{linear_speed},
-        m_angular_speed{angular_speed},
-        m_roll{0},
-        m_pitch{0},
-        m_yaw{0},
-        m_kv{1},
-        m_kh{1},
-        m_goal_x{0.0},
-        m_goal_y{0.0} {
+        robot_name_curr{robot_name},
+        navigate_curr{navigate},
+        linear_speed_curr{linear_speed},
+        angular_speed_curr{angular_speed},
+        roll_curr{0},
+        pitch_curr{0},
+        yaw_curr{0},
+        // Kv{1},
+        // Kh{1},
+        goal_curr_x{0.0},
+        goal_curr_y{0.0} {
     auto current_location = std::make_pair(3.0, 0.0);
-    m_location = current_location;
-    m_cbg = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    curr_loc = current_location;
+    callback_grp = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     obstacle = false;
-    auto command_topic_name = "/" + m_robot_name + "/cmd_vel";
-    auto pose_topic_name = "/" + m_robot_name + "/odom";
-    auto detection_topic_name = "/" + m_robot_name + "/camera/image_raw";
-    auto lidar_topic_name = "/" + m_robot_name + "/scan";
+    auto command_topic_name = "/" + robot_name_curr + "/cmd_vel";
+    auto pose_topic_name = "/" + robot_name_curr + "/odom";
+    auto detection_topic_name = "/" + robot_name_curr + "/camera/image_raw";
+    auto lidar_topic_name = "/" + robot_name_curr + "/scan";
 
     RCLCPP_INFO_STREAM(this->get_logger(), "Robot Constructor");
-    m_publisher_cmd_vel = this->create_publisher<geometry_msgs::msg::Twist>(
+    vel_publisher_curr = this->create_publisher<geometry_msgs::msg::Twist>(
         command_topic_name, 10);
-    m_goal_reached_publisher =
+    goal_pub =
         this->create_publisher<std_msgs::msg::Bool>("goal_reached", 10);
-    m_subscriber_robot3_pose =
+    robot_pose_curr =
         this->create_subscription<nav_msgs::msg::Odometry>(
             pose_topic_name, 10,
             std::bind(&Robot::robot_pose_callback, this,
                       std::placeholders::_1));
 
-    m_lidar_sub = this->create_subscription<sensor_msgs::msg::LaserScan>(
+    lidar_sub_curr = this->create_subscription<sensor_msgs::msg::LaserScan>(
       lidar_topic_name, 10, std::bind(&Robot::lidar_callback, this, _1));
 
-    m_subscriber_image =
+    cam_sub_curr =
         this->create_subscription<sensor_msgs::msg::Image>(
             detection_topic_name, 10,
             std::bind(&Robot::imageCallback, this,
                       std::placeholders::_1));
-    m_subscriber_move_flag =
+    subscriber_move_flag =
         this->create_subscription<std_msgs::msg::Bool>(
             "/red_object_detected", 10,
             std::bind(&Robot::move_flag_callback, this,
                       std::placeholders::_1));
-    m_red_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/red_object_detected", 10);
+    common_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/red_object_detected", 10);
     // Call on_timer function 5 times per second
-    m_go_to_goal_timer = this->create_wall_timer(
+    navigate_curr_timer = this->create_wall_timer(
         std::chrono::milliseconds(static_cast<int>(1000.0 / 1)),
-        std::bind(&Robot::go_to_goal_callback, this), m_cbg);
+        std::bind(&Robot::navigate_callback, this), callback_grp);
         }
     void move_flag_callback(const std_msgs::msg::Bool::SharedPtr msg)
       {
@@ -92,21 +92,21 @@ class Robot : public rclcpp::Node {
       }
 
     void set_goal(double x, double y) {
-      m_go_to_goal = true;
-      m_goal_x = x;
-      m_goal_y = y;
-      RCLCPP_INFO_STREAM(this->get_logger(), "Going to goal: [" << m_goal_x << ","
-                                                                << m_goal_y
+      navigate_curr = true;
+      goal_curr_x = x;
+      goal_curr_y = y;
+      RCLCPP_INFO_STREAM(this->get_logger(), "Going to goal: [" << goal_curr_x << ","
+                                                                << goal_curr_y
                                                               << "]");
   }
 
     void robot_pose_callback(const nav_msgs::msg::Odometry &msg) {
-      m_location.first = msg.pose.pose.position.x;
-      m_location.second = msg.pose.pose.position.y;
+      curr_loc.first = msg.pose.pose.position.x;
+      curr_loc.second = msg.pose.pose.position.y;
       m_orientation = msg.pose.pose.orientation;
     }
 
-    double normalize_angle_positive(double angle) {
+    double angle_resize_positive(double angle) {
       const double result = fmod(angle, 2.0 * M_PI);
       if (result < 0) return result + 2.0 * M_PI;
       return result;
@@ -137,12 +137,12 @@ class Robot : public rclcpp::Node {
       }
   }
 
-    double compute_distance(const std::pair<double, double> &a,
+    double euclid_dist(const std::pair<double, double> &a,
                                const std::pair<double, double> &b) {
       return sqrt(pow(b.first - a.first, 2) + pow(b.second - a.second, 2));
     }
 
-    double compute_yaw_from_quaternion() {
+    double yaw() {
       tf2::Quaternion q(m_orientation.x, m_orientation.y, m_orientation.z,
                         m_orientation.w);
       tf2::Matrix3x3 m(q);
@@ -151,7 +151,7 @@ class Robot : public rclcpp::Node {
 
       return yaw;
     }
-    double normalize_angle(double angle) {
+    double angle_resize(double angle) {
       const double result = fmod(angle + M_PI, 2.0 * M_PI);
       if (result <= 0.0) return result + M_PI;
       return result - M_PI;
@@ -161,62 +161,63 @@ class Robot : public rclcpp::Node {
       geometry_msgs::msg::Twist msg;
       msg.linear.x = linear;
       msg.angular.z = angular;
-      m_publisher_cmd_vel->publish(msg);
+      vel_publisher_curr->publish(msg);
     }
     void stop() {
-      m_go_to_goal = false;
+      navigate_curr = false;
       geometry_msgs::msg::Twist cmd_vel_msg;
       cmd_vel_msg.linear.x = 0;
       cmd_vel_msg.angular.z = 0;
-      m_publisher_cmd_vel->publish(cmd_vel_msg);
+      vel_publisher_curr->publish(cmd_vel_msg);
 
       std_msgs::msg::Bool goal_reached_msg;
       goal_reached_msg.data = true;
-      m_goal_reached_publisher->publish(goal_reached_msg);
+      goal_pub->publish(goal_reached_msg);
     }
 
 
-    void go_to_goal_callback() {
-      if (!m_go_to_goal) return;
+    void navigate_callback() {
+      if (!navigate_curr) return;
 
-      std::pair<double, double> goal{m_goal_x, m_goal_y};
-      double distance_to_goal = compute_distance(m_location, goal);
+      std::pair<double, double> goal{goal_curr_x, goal_curr_y};
+      double distance_to_goal = euclid_dist(curr_loc, goal);
 
       if (distance_to_goal > 0.1) {
-        distance_to_goal = compute_distance(m_location, goal);
+        distance_to_goal = euclid_dist(curr_loc, goal);
         double angle_to_goal =
-            std::atan2(m_goal_y - m_location.second, m_goal_x - m_location.first);
+            std::atan2(goal_curr_y - curr_loc.second, goal_curr_x - curr_loc.first);
 
         if (angle_to_goal < 0)
           // angle_to_goal = 2 * M_PI + angle_to_goal;
-          angle_to_goal = normalize_angle_positive(angle_to_goal);
+          angle_to_goal = angle_resize_positive(angle_to_goal);
 
         // angle to rotate to face the goal
-        double w = angle_to_goal - compute_yaw_from_quaternion();
+        double w = angle_to_goal - yaw();
 
         if (w > M_PI) {
           w = w - 2 * M_PI;
-          // w = m_normalize_angle_positive(w);
+          // w = m_angle_resize_positive(w);
         }
 
         // proportional control for linear velocity
-        double linear_x = std::min(m_kv * distance_to_goal, m_linear_speed);
-
+        // double velocity_x = std::min(Kv * distance_to_goal, linear_speed_curr);
+          double velocity_x = linear_speed_curr;
         // proportional control for angular velocity
-        double angular_z = m_kh * w;
+        // double angular_vel_z = Kh * w;
+          double angular_vel_z = w;
         if (this->obstacle==false){
-          if (angular_z > 0)
-            angular_z = std::min(angular_z, m_angular_speed);
+          if (angular_vel_z > 0)
+            angular_vel_z = std::min(angular_vel_z, angular_speed_curr);
           else
-            angular_z = std::max(angular_z, -m_angular_speed);
+            angular_vel_z = std::max(angular_vel_z, -angular_speed_curr);
         }
         else{
-          linear_x = 0;
-          angular_z = 3.14/2;
+          velocity_x = 0;
+          angular_vel_z = 3.14/2;
         }
 
         if(global_move_flag == false){
-          move(linear_x, angular_z);
+          move(velocity_x, angular_vel_z);
         } else{
           move(0.0, 0.0);
         }
@@ -272,7 +273,7 @@ class Robot : public rclcpp::Node {
                         std_msgs::msg::Bool move_flag_local;
                         move_flag_local.data = true;
                         // move(0, 0);
-                        m_red_publisher_->publish(move_flag_local);
+                        common_publisher_->publish(move_flag_local);
                         // msg.data = "Red object detected with a large enough area!";
                         // red_publisher_->publish(msg);
 
@@ -301,33 +302,33 @@ class Robot : public rclcpp::Node {
 
       private:
         // attributes
-        std::string m_robot_name;  // robot name used for creating namespace
-        bool m_go_to_goal;         // flag to store if the robot has reached position
-        double m_linear_speed;     // base linear velocity of robot
-        double m_angular_speed;    // base angular velocity of robot
-        double m_roll;             // rad
-        double m_pitch;            // rad
-        double m_yaw;              // rad
-        double m_kv;               // gain for linear velocity
-        double m_kh;               // gain for angular velocity
-        double m_goal_x;
-        double m_goal_y;
+        std::string robot_name_curr;  // robot name used for creating namespace
+        bool navigate_curr;         // flag to store if the robot has reached position
+        double linear_speed_curr;     // base linear velocity of robot
+        double angular_speed_curr;    // base angular velocity of robot
+        double roll_curr;             // rad
+        double pitch_curr;            // rad
+        double yaw_curr;              // rad
+        double Kv;               // gain for linear velocity
+        double Kh;               // gain for angular velocity
+        double goal_curr_x;
+        double goal_curr_y;
         double m_distance_to_goal;
         bool global_move_flag{false};
         bool obstacle;
 
-        rclcpp::CallbackGroup::SharedPtr m_cbg;
+        rclcpp::CallbackGroup::SharedPtr callback_grp;
         rclcpp::TimerBase::SharedPtr m_timer;
-        rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr m_publisher_cmd_vel;
-        rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr m_goal_reached_publisher;
-        rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr m_subscriber_robot3_pose;
-        rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr m_subscriber_image;
-        rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr m_subscriber_move_flag;
-        rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr m_red_publisher_;
-        rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr m_lidar_sub;
-        std::pair<double, double> m_location;
+        rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_publisher_curr;
+        rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr goal_pub;
+        rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr robot_pose_curr;
+        rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr cam_sub_curr;
+        rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr subscriber_move_flag;
+        rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr common_publisher_;
+        rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lidar_sub_curr;
+        std::pair<double, double> curr_loc;
         //   geometry_msgs::msg::Quaternion m_orientation;
-        rclcpp::TimerBase::SharedPtr m_go_to_goal_timer;
+        rclcpp::TimerBase::SharedPtr navigate_curr_timer;
 };
 
 

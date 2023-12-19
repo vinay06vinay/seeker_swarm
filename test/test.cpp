@@ -66,42 +66,42 @@ TEST_F(RobotTest, slave_spawn_testing_publishers) {
 // }
 
 // Check Method Compute Distance
-TEST_F(RobotTest, compute_distance) {
+TEST_F(RobotTest, euclid_dist) {
   int n = 1;
   auto r_namespace = "robot_" + std::to_string(n);
   auto nodename = "robot_" + std::to_string(n) + "_controller";
   robot = std::make_shared<Robot>(nodename, r_namespace);
   std::pair<double, double> goal{10.0, 10.0};
   std::pair<double, double> loc{0.0, 0.0};
-  double distance = robot->compute_distance(loc, goal);
+  double distance = robot->euclid_dist(loc, goal);
   double ex = 14.1421;
   EXPECT_NEAR(ex, distance, 0.1);
 }
 
 // Check Method Nomrmalize Angle
-TEST_F(RobotTest, normalize_angle) {
+TEST_F(RobotTest, angle_resize) {
   int n = 1;
   auto r_namespace = "robot_" + std::to_string(n);
   auto nodename = "robot_" + std::to_string(n) + "_controller";
   robot = std::make_shared<Robot>(nodename, r_namespace);
-  double angle = robot->normalize_angle(-10.14);
+  double angle = robot->angle_resize(-10.14);
   double ex = 2.42637;
   EXPECT_NEAR(ex, angle, 0.1);
 }
 
 // Check Method Nomrmalize Angle Positive
-TEST_F(RobotTest, test_normalize_angle_positive) {
+TEST_F(RobotTest, test_angle_resize_positive) {
   int n = 1;
   auto r_namespace = "robot_" + std::to_string(n);
   auto nodename = "robot_" + std::to_string(n) + "_controller";
   robot = std::make_shared<Robot>(nodename, r_namespace);
-  double angle = robot->normalize_angle_positive(-7.29);
+  double angle = robot->angle_resize_positive(-7.29);
   double ex = 5.2763;
   EXPECT_NEAR(ex, angle, 0.1);
 }
 
 // Check Method Yaw From Quaternions
-TEST_F(RobotTest, compute_yaw_from_quaternion) {
+TEST_F(RobotTest, yaw) {
   int n = 1;
   auto r_namespace = "robot_" + std::to_string(n);
   auto nodename = "robot_" + std::to_string(n) + "_controller";
@@ -110,7 +110,7 @@ TEST_F(RobotTest, compute_yaw_from_quaternion) {
   robot->m_orientation.y = 5.0;
   robot->m_orientation.z = 4.0;
   robot->m_orientation.w = 6.0;
-  double yaw = robot->compute_yaw_from_quaternion();
+  double yaw = robot->yaw();
   double ex = 1.51955;
   EXPECT_NEAR(ex, yaw, 0.1);
 }
