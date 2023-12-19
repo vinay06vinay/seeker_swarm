@@ -56,7 +56,7 @@ def generate_launch_description():
     urdf_path = '/opt/ros/humble/share/turtlebot3_gazebo/models/{}/model.sdf'.format(model_folder)
 
     # Set the number of robots to spawn
-    count = 5  # Adjust this as needed
+    count = 10  # Adjust this as needed
 
     ld = LaunchDescription()
     for i in range(count):

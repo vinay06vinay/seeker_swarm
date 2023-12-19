@@ -12,6 +12,14 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(Doxygen REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(rosbag2_cpp REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(ament_cmake_gtest)
 # find_package(my_model REQUIRED) # add my_model
 
 ############################################
@@ -92,12 +100,14 @@ doxygen_add_docs(docs           # target name
 #add_executable(listener
 # src/subscriber_member_function.cpp)
   
-add_executable(robotswarm
-  src/node_robot_swarm.cpp)
+# add_executable(robotswarm
+#   src/node_robot_swarm.cpp)
 add_executable(warehousehead
   src/node_warehouse_head.cpp)
 add_executable(lostparts
   src/node_lost_parts.cpp)
+add_executable(main_f
+  src/main.cpp src/master.cpp src/node_robot_swarm.cpp)
 
 # Add executable dependencis:
 #ament_target_dependencies(talker
@@ -111,11 +121,14 @@ add_executable(lostparts
 #target_link_libraries(listener
 #  my_model)
 
-ament_target_dependencies(robotswarm
-  rclcpp std_msgs)
+# ament_target_dependencies(robotswarm
+#   rclcpp std_msgs)
   
 ament_target_dependencies(warehousehead
   rclcpp std_msgs)
+
+ament_target_dependencies(main_f 
+  tf2 tf2_ros rclcpp std_msgs sensor_msgs geometry_msgs nav_msgs)
 
 ament_target_dependencies(lostparts
   rclcpp std_msgs)
@@ -125,7 +138,7 @@ ament_target_dependencies(lostparts
 
 # Install executables:
 install(TARGETS
-  robotswarm
+  main_f
   warehousehead
   lostparts
   DESTINATION lib/${PROJECT_NAME})
