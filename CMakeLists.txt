@@ -42,7 +42,7 @@ if(BUILD_TESTING)
     $<INSTALL_INTERFACE:include>
   )
   ament_target_dependencies(${PROJECT_NAME}_test
-    rclcpp std_msgs
+  tf2 tf2_ros rclcpp std_msgs sensor_msgs geometry_msgs nav_msgs cv_bridge image_transport
   )
   # target_link_libraries(${PROJECT_NAME}_test my_model)
 endif()
