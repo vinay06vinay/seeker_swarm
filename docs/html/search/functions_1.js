@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lostparts_32',['LostParts',['../classLostParts.html#a33111a3a02daa39409ad4b9fe38f09d9',1,'LostParts']]]
+  ['euclid_5fdist_63',['euclid_dist',['../classRobotSwarm.html#aae484b2862844fcb76a0e50e3a40c272',1,'RobotSwarm']]]
 ];

@@ -1,0 +1,4 @@
+<map id="RobotSwarm::navigate_callback" name="RobotSwarm::navigate_callback">
+<area shape="rect" id="node1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="249,5,420,47"/>
+<area shape="rect" id="node2" href="$classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
+</map>

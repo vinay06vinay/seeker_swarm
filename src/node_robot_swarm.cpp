@@ -1,3 +1,14 @@
+/**
+ * @file node_robot_swarm.cpp
+ * @brief This file contains the implementation of the RobotSwarm class
+ * @author Neha Nitin Madhekar,Vinay Krishna Bukka, Rashmi Kapu
+ * @date 2023
+ * @copyright Open Source Robotics Foundation, Inc.
+ * @license Apache License, Version 2.0
+ *    (you may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0)
+ *
+ */
 #pragma once
 
 #include "tf2/LinearMath/Matrix3x3.h"
@@ -22,8 +33,27 @@
 
 using std::placeholders::_1;
 
+/**
+ * @class RobotSwarm
+ * @brief A class representing a robot in a swarm.
+ *
+ * The RobotSwarm class inherits from the rclcpp::Node class and provides functionality to control and navigate
+ * an individual robot in a swarm. It includes methods for setting goals, moving, and handling sensor data.
+ */
 class RobotSwarm : public rclcpp::Node {
 public:
+/**
+     * @brief Constructor for the RobotSwarm class.
+     *
+     * Initializes the RobotSwarm with the provided parameters and sets up ROS 2 publishers and subscribers for
+     * controlling the robot and receiving sensor data.
+     *
+     * @param node_name Name of the robot's ROS 2 node.
+     * @param robot_name Name of the robot.
+     * @param navigate Whether the robot should navigate.
+     * @param linear_speed Linear speed of the robot.
+     * @param angular_speed Angular speed of the robot.
+     */
   RobotSwarm(std::string node_name, std::string robot_name,
              bool navigate = false, double linear_speed = 1.0,
              double angular_speed = 0.0)
@@ -78,6 +108,12 @@ public:
     }
   }
 
+/**
+     * @brief Sets a goal for the robot to reach.
+     *
+     * @param x X-coordinate of the goal.
+     * @param y Y-coordinate of the goal.
+     */
   void set_goal(double x, double y) {
     navigate_curr = true;
     goal_curr_x = x;
@@ -87,6 +123,11 @@ public:
                                                << goal_curr_y << "]");
   }
 
+ /**
+     * @brief Callback function for the robot's pose subscription.
+     *
+     * @param msg The received Odometry message containing the robot's pose.
+     */
   void robot_pose_callback(const nav_msgs::msg::Odometry &msg) {
     curr_loc.first = msg.pose.pose.position.x;
     curr_loc.second = msg.pose.pose.position.y;
@@ -100,6 +141,11 @@ public:
     return result;
   }
 
+ /**
+     * @brief Callback function for the lidar data subscription.
+     *
+     * @param msg The received LaserScan message containing lidar data.
+     */
   void lidar_callback(const sensor_msgs::msg::LaserScan &msg) {
     // if (msg.header.stamp.sec == 0) {
     //   return;
@@ -124,11 +170,23 @@ public:
     }
   }
 
+ /**
+     * @brief Calculates the Euclidean distance between two points.
+     *
+     * @param a First point.
+     * @param b Second point.
+     * @return Euclidean distance between points a and b.
+     */
   double euclid_dist(const std::pair<double, double> &a,
                      const std::pair<double, double> &b) {
     return sqrt(pow(b.first - a.first, 2) + pow(b.second - a.second, 2));
   }
 
+/**
+     * @brief Gets the yaw angle from the robot's orientation quaternion.
+     *
+     * @return Yaw angle in radians.
+     */
   double yaw() {
     tf2::Quaternion q(m_orientation.x, m_orientation.y, m_orientation.z,
                       m_orientation.w);
@@ -163,6 +221,10 @@ public:
     goal_pub->publish(goal_reached_msg);
   }
 
+ /**
+     * @brief Callback function for the navigation timer.
+     *        Controls the robot's movement towards the goal.
+     */
   void navigate_callback() {
     if (!navigate_curr)
       return;
@@ -215,6 +277,11 @@ public:
     }
   }
 
+/**
+     * @brief Callback function for the camera image subscription.
+     *
+     * @param msg The received Image message containing camera data.
+     */
   void imageCallback(const sensor_msgs::msg::Image::SharedPtr msg) {
     cv_bridge::CvImagePtr cv_ptr;
 

@@ -1,0 +1,11 @@
+<map id="SwarmMaster" name="SwarmMaster">
+<area shape="rect" id="node1" title="A class representing the master node that controls a swarm of robots." alt="" coords="222,657,381,764"/>
+<area shape="rect" id="node2" title=" " alt="" coords="10,495,113,573"/>
+<area shape="rect" id="node3" title=" " alt="" coords="137,488,316,580"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,348,237,425"/>
+<area shape="rect" id="node5" title=" " alt="" coords="67,145,224,223"/>
+<area shape="rect" id="node6" title=" " alt="" coords="194,5,233,83"/>
+<area shape="rect" id="node7" title=" " alt="" coords="234,247,363,324"/>
+<area shape="rect" id="node8" title=" " alt="" coords="341,495,379,573"/>
+<area shape="rect" id="node9" title=" " alt="" coords="404,495,489,573"/>
+</map>

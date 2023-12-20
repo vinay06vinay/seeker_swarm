@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['publisher_10',['PUBLISHER',['../node__lost__parts_8cpp.html#aedde21d880986a2e47c0b510ef43b2c4',1,'PUBLISHER():&#160;node_lost_parts.cpp'],['../node__robot__swarm_8cpp.html#aedde21d880986a2e47c0b510ef43b2c4',1,'PUBLISHER():&#160;node_robot_swarm.cpp'],['../node__warehouse__head_8cpp.html#aedde21d880986a2e47c0b510ef43b2c4',1,'PUBLISHER():&#160;node_warehouse_head.cpp']]],
-  ['publisher_5f_11',['publisher_',['../classLostParts.html#a3f9f64a7d9037721dffc6ab9812b4696',1,'LostParts::publisher_()'],['../classRobotSwarm.html#a2fca4ea09bdfbb7edf9fd0a4a43391d3',1,'RobotSwarm::publisher_()'],['../classWarehouseHead.html#ae832521d6dc48337e8c0a5492f491154',1,'WarehouseHead::publisher_()']]]
+  ['lidar_5fcallback_13',['lidar_callback',['../classRobotSwarm.html#af88bb62100455514e0ba6a3b2de378cb',1,'RobotSwarm']]],
+  ['lidar_5fsub_5fcurr_14',['lidar_sub_curr',['../classRobotSwarm.html#a41066fbb1d36fb0ae664a2ba9e048ee7',1,'RobotSwarm']]],
+  ['linear_5fspeed_5fcurr_15',['linear_speed_curr',['../classRobotSwarm.html#aee93253a02770023b62dfe4b3faa5baf',1,'RobotSwarm']]]
 ];

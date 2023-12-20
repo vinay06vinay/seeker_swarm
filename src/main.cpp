@@ -1,3 +1,14 @@
+/**
+ * @file node_robot_swarm.cpp
+ * @brief Main function for a robot swarm control application using ROS 2 and RobotSwarm.
+ * @author Neha Nitin Madhekar,Vinay Krishna Bukka, Rashmi Kapu
+ * @date 2023
+ * @copyright Open Source Robotics Foundation, Inc.
+ * @license Apache License, Version 2.0
+ *    (you may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0)
+ *
+ */
 #include <stdexcept>
 #include <string>
 
@@ -8,7 +19,17 @@
 #include "master.cpp"
 #include <random>
 
-
+/**
+ * @brief Main function to initialize and run a robot swarm control application.
+ *
+ * This function initializes ROS 2, creates a multi-threaded executor, generates a specified number of robot nodes
+ * with random parameters, and adds them to the executor. It also creates a SwarmMaster node, adds it to the executor,
+ * and starts spinning the executor.
+ *
+ * @param argc Number of command line arguments.
+ * @param argv Array of command line arguments.
+ * @return 0 on successful execution.
+ */
 int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
   rclcpp::executors::MultiThreadedExecutor exec;

@@ -1,3 +1,14 @@
+/**
+ * @file test.cpp
+ * @brief This file contains the implementation of unit tests
+ * @author Neha Nitin Madhekar,Vinay Krishna Bukka, Rashmi Kapu
+ * @date 2023
+ * @copyright Open Source Robotics Foundation, Inc.
+ * @license Apache License, Version 2.0
+ *    (you may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0)
+ *
+ */
 #include <gtest/gtest.h>
 #include "../src/node_robot_swarm.cpp"  
 

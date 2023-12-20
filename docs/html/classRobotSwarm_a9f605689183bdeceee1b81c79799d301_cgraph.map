@@ -1,0 +1,13 @@
+<map id="RobotSwarm::RobotSwarm" name="RobotSwarm::RobotSwarm">
+<area shape="rect" id="node1" title="Constructor for the RobotSwarm class." alt="" coords="5,115,201,141"/>
+<area shape="rect" id="node2" href="$classRobotSwarm.html#a66dbdc120f7a24d41b251b6e0b407daa" title="Callback function for the camera image subscription." alt="" coords="249,5,460,32"/>
+<area shape="rect" id="node3" href="$classRobotSwarm.html#af88bb62100455514e0ba6a3b2de378cb" title="Callback function for the lidar data subscription." alt="" coords="253,56,456,83"/>
+<area shape="rect" id="node4" href="$classRobotSwarm.html#a4c9a4afa4b18f7ca7633daeacb0c7d44" title=" " alt="" coords="264,107,445,149"/>
+<area shape="rect" id="node5" href="$classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="269,173,440,214"/>
+<area shape="rect" id="node11" href="$classRobotSwarm.html#af8855ebac389c703aa7a3c969f3d3422" title="Callback function for the robot&#39;s pose subscription." alt="" coords="262,238,447,279"/>
+<area shape="rect" id="node6" href="$classRobotSwarm.html#a9bdb3f23f485a6b191e1e46e7c826383" title=" " alt="" coords="508,63,703,105"/>
+<area shape="rect" id="node7" href="$classRobotSwarm.html#aae484b2862844fcb76a0e50e3a40c272" title="Calculates the Euclidean distance between two points." alt="" coords="514,129,697,156"/>
+<area shape="rect" id="node8" href="$classRobotSwarm.html#a56446d720292c03567d9a93ad27d2772" title=" " alt="" coords="530,180,681,207"/>
+<area shape="rect" id="node9" href="$classRobotSwarm.html#acffbe43d25420f69d0c2aaa4769192b9" title=" " alt="" coords="535,231,676,257"/>
+<area shape="rect" id="node10" href="$classRobotSwarm.html#a3dd18a2b91423903d898291aa80ef1a7" title="Gets the yaw angle from the robot&#39;s orientation quaternion." alt="" coords="535,281,675,308"/>
+</map>

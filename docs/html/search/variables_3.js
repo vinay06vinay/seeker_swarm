@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['timer_5f_45',['timer_',['../classLostParts.html#a094056761d58338d2489535388e118b4',1,'LostParts::timer_()'],['../classRobotSwarm.html#ac3c31d821eb5629302e6109f1a59dc37',1,'RobotSwarm::timer_()'],['../classWarehouseHead.html#a1822c734649934838d1feeb7fff2f1a1',1,'WarehouseHead::timer_()']]]
+  ['lidar_5fsub_5fcurr_87',['lidar_sub_curr',['../classRobotSwarm.html#a41066fbb1d36fb0ae664a2ba9e048ee7',1,'RobotSwarm']]],
+  ['linear_5fspeed_5fcurr_88',['linear_speed_curr',['../classRobotSwarm.html#aee93253a02770023b62dfe4b3faa5baf',1,'RobotSwarm']]]
 ];

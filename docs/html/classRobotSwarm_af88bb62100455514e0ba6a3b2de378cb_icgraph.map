@@ -1,0 +1,4 @@
+<map id="RobotSwarm::lidar_callback" name="RobotSwarm::lidar_callback">
+<area shape="rect" id="node1" title="Callback function for the lidar data subscription." alt="" coords="249,5,452,32"/>
+<area shape="rect" id="node2" href="$classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,5,201,32"/>
+</map>

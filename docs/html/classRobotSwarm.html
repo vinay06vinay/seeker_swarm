@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SeekerSwarm: RobotSwarm Class Reference</title>
+<title>seeker_swarm: RobotSwarm Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">SeekerSwarm
+   <div id="projectname">seeker_swarm
    </div>
   </td>
  </tr>
@@ -63,7 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classRobotSwarm-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -71,15 +71,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="classRobotSwarm.html" title="The RobotSwarm class represents a ROS 2 node for managing a swarm of robots.">RobotSwarm</a> class represents a ROS 2 node for managing a swarm of robots.  
+<p>A class representing a robot in a swarm.  
  <a href="classRobotSwarm.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for RobotSwarm:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRobotSwarm__inherit__graph.png" border="0" usemap="#aRobotSwarm_inherit__map" alt="Inheritance graph"/></div>
 <map name="aRobotSwarm_inherit__map" id="aRobotSwarm_inherit__map">
-<area shape="rect" title="The RobotSwarm class represents a ROS 2 node for managing a swarm of robots." alt="" coords="5,131,148,296"/>
-<area shape="rect" title=" " alt="" coords="25,5,128,83"/>
+<area shape="rect" title="A class representing a robot in a swarm." alt="" coords="5,131,193,721"/>
+<area shape="rect" title=" " alt="" coords="48,5,151,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -87,48 +87,115 @@ Collaboration diagram for RobotSwarm:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRobotSwarm__coll__graph.png" border="0" usemap="#aRobotSwarm_coll__map" alt="Collaboration graph"/></div>
 <map name="aRobotSwarm_coll__map" id="aRobotSwarm_coll__map">
-<area shape="rect" title="The RobotSwarm class represents a ROS 2 node for managing a swarm of robots." alt="" coords="91,160,233,296"/>
-<area shape="rect" title=" " alt="" coords="5,5,108,83"/>
-<area shape="rect" title=" " alt="" coords="132,5,192,83"/>
-<area shape="rect" title=" " alt="" coords="217,5,302,83"/>
+<area shape="rect" title="A class representing a robot in a swarm." alt="" coords="403,433,591,687"/>
+<area shape="rect" title=" " alt="" coords="5,147,108,224"/>
+<area shape="rect" title=" " alt="" coords="133,147,199,224"/>
+<area shape="rect" title=" " alt="" coords="223,147,397,224"/>
+<area shape="rect" title=" " alt="" coords="421,147,516,224"/>
+<area shape="rect" title=" " alt="" coords="541,147,591,224"/>
+<area shape="rect" title=" " alt="" coords="679,147,765,224"/>
+<area shape="rect" title=" " alt="" coords="653,5,791,97"/>
+<area shape="rect" title=" " alt="" coords="914,147,999,224"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a78ba819cc0a7359fc8945342773d2680"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a78ba819cc0a7359fc8945342773d2680">RobotSwarm</a> ()</td></tr>
-<tr class="memdesc:a78ba819cc0a7359fc8945342773d2680"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="classRobotSwarm.html" title="The RobotSwarm class represents a ROS 2 node for managing a swarm of robots.">RobotSwarm</a> class.  <a href="classRobotSwarm.html#a78ba819cc0a7359fc8945342773d2680">More...</a><br /></td></tr>
-<tr class="separator:a78ba819cc0a7359fc8945342773d2680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f605689183bdeceee1b81c79799d301"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301">RobotSwarm</a> (std::string node_name, std::string robot_name, bool navigate=false, double linear_speed=1.0, double angular_speed=0.0)</td></tr>
+<tr class="memdesc:a9f605689183bdeceee1b81c79799d301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classRobotSwarm.html" title="A class representing a robot in a swarm.">RobotSwarm</a> class.  <a href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301">More...</a><br /></td></tr>
+<tr class="separator:a9f605689183bdeceee1b81c79799d301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c9a4afa4b18f7ca7633daeacb0c7d44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a4c9a4afa4b18f7ca7633daeacb0c7d44">move_flag_callback</a> (const std_msgs::msg::Bool::SharedPtr msg)</td></tr>
+<tr class="separator:a4c9a4afa4b18f7ca7633daeacb0c7d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46c864f51fac32345d66234044136054"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a46c864f51fac32345d66234044136054">set_goal</a> (double x, double y)</td></tr>
+<tr class="memdesc:a46c864f51fac32345d66234044136054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a goal for the robot to reach.  <a href="classRobotSwarm.html#a46c864f51fac32345d66234044136054">More...</a><br /></td></tr>
+<tr class="separator:a46c864f51fac32345d66234044136054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8855ebac389c703aa7a3c969f3d3422"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#af8855ebac389c703aa7a3c969f3d3422">robot_pose_callback</a> (const nav_msgs::msg::Odometry &amp;msg)</td></tr>
+<tr class="memdesc:af8855ebac389c703aa7a3c969f3d3422"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for the robot's pose subscription.  <a href="classRobotSwarm.html#af8855ebac389c703aa7a3c969f3d3422">More...</a><br /></td></tr>
+<tr class="separator:af8855ebac389c703aa7a3c969f3d3422"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bdb3f23f485a6b191e1e46e7c826383"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a9bdb3f23f485a6b191e1e46e7c826383">angle_resize_positive</a> (double angle)</td></tr>
+<tr class="separator:a9bdb3f23f485a6b191e1e46e7c826383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af88bb62100455514e0ba6a3b2de378cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#af88bb62100455514e0ba6a3b2de378cb">lidar_callback</a> (const sensor_msgs::msg::LaserScan &amp;msg)</td></tr>
+<tr class="memdesc:af88bb62100455514e0ba6a3b2de378cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for the lidar data subscription.  <a href="classRobotSwarm.html#af88bb62100455514e0ba6a3b2de378cb">More...</a><br /></td></tr>
+<tr class="separator:af88bb62100455514e0ba6a3b2de378cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae484b2862844fcb76a0e50e3a40c272"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#aae484b2862844fcb76a0e50e3a40c272">euclid_dist</a> (const std::pair&lt; double, double &gt; &amp;a, const std::pair&lt; double, double &gt; &amp;b)</td></tr>
+<tr class="memdesc:aae484b2862844fcb76a0e50e3a40c272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the Euclidean distance between two points.  <a href="classRobotSwarm.html#aae484b2862844fcb76a0e50e3a40c272">More...</a><br /></td></tr>
+<tr class="separator:aae484b2862844fcb76a0e50e3a40c272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dd18a2b91423903d898291aa80ef1a7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a3dd18a2b91423903d898291aa80ef1a7">yaw</a> ()</td></tr>
+<tr class="memdesc:a3dd18a2b91423903d898291aa80ef1a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the yaw angle from the robot's orientation quaternion.  <a href="classRobotSwarm.html#a3dd18a2b91423903d898291aa80ef1a7">More...</a><br /></td></tr>
+<tr class="separator:a3dd18a2b91423903d898291aa80ef1a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a216c8688a94c36ebf8b29ad7dcb1eccd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a216c8688a94c36ebf8b29ad7dcb1eccd">angle_resize</a> (double angle)</td></tr>
+<tr class="separator:a216c8688a94c36ebf8b29ad7dcb1eccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56446d720292c03567d9a93ad27d2772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a56446d720292c03567d9a93ad27d2772">move</a> (double linear, double angular)</td></tr>
+<tr class="separator:a56446d720292c03567d9a93ad27d2772"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acffbe43d25420f69d0c2aaa4769192b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#acffbe43d25420f69d0c2aaa4769192b9">stop</a> ()</td></tr>
+<tr class="separator:acffbe43d25420f69d0c2aaa4769192b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a481ddfabb4481289fa8f24047fc480c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1">navigate_callback</a> ()</td></tr>
+<tr class="memdesc:a481ddfabb4481289fa8f24047fc480c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for the navigation timer. Controls the robot's movement towards the goal.  <a href="classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1">More...</a><br /></td></tr>
+<tr class="separator:a481ddfabb4481289fa8f24047fc480c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66dbdc120f7a24d41b251b6e0b407daa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a66dbdc120f7a24d41b251b6e0b407daa">imageCallback</a> (const sensor_msgs::msg::Image::SharedPtr msg)</td></tr>
+<tr class="memdesc:a66dbdc120f7a24d41b251b6e0b407daa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for the camera image subscription.  <a href="classRobotSwarm.html#a66dbdc120f7a24d41b251b6e0b407daa">More...</a><br /></td></tr>
+<tr class="separator:a66dbdc120f7a24d41b251b6e0b407daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a7411bbb8c2bcba07e0eebc5af47a5a3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a7411bbb8c2bcba07e0eebc5af47a5a3b">timer_callback</a> ()</td></tr>
-<tr class="memdesc:a7411bbb8c2bcba07e0eebc5af47a5a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback function.  <a href="classRobotSwarm.html#a7411bbb8c2bcba07e0eebc5af47a5a3b">More...</a><br /></td></tr>
-<tr class="separator:a7411bbb8c2bcba07e0eebc5af47a5a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade833b3e0c5f026fcbdb3a8c400b61ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#ade833b3e0c5f026fcbdb3a8c400b61ad">MovotoPosition</a> ()</td></tr>
-<tr class="memdesc:ade833b3e0c5f026fcbdb3a8c400b61ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move to a specific position.  <a href="classRobotSwarm.html#ade833b3e0c5f026fcbdb3a8c400b61ad">More...</a><br /></td></tr>
-<tr class="separator:ade833b3e0c5f026fcbdb3a8c400b61ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cde04d67142b1171220b848e2edcf38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a9cde04d67142b1171220b848e2edcf38">SearchPath</a> ()</td></tr>
-<tr class="memdesc:a9cde04d67142b1171220b848e2edcf38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for a path.  <a href="classRobotSwarm.html#a9cde04d67142b1171220b848e2edcf38">More...</a><br /></td></tr>
-<tr class="separator:a9cde04d67142b1171220b848e2edcf38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2981473963b37fecebe90ec1539cdad3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a2981473963b37fecebe90ec1539cdad3">AlertPartFound</a> ()</td></tr>
-<tr class="memdesc:a2981473963b37fecebe90ec1539cdad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alert when a part is found.  <a href="classRobotSwarm.html#a2981473963b37fecebe90ec1539cdad3">More...</a><br /></td></tr>
-<tr class="separator:a2981473963b37fecebe90ec1539cdad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a7853933f9ae7beb9b70669896afa0c44"><td class="memItemLeft" align="right" valign="top">geometry_msgs::msg::Quaternion&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a7853933f9ae7beb9b70669896afa0c44">m_orientation</a></td></tr>
+<tr class="separator:a7853933f9ae7beb9b70669896afa0c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ab21287bf7cd0b27c58bfb91356f33b89"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#ab21287bf7cd0b27c58bfb91356f33b89">count_</a></td></tr>
-<tr class="separator:ab21287bf7cd0b27c58bfb91356f33b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fca4ea09bdfbb7edf9fd0a4a43391d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="node__lost__parts_8cpp.html#aedde21d880986a2e47c0b510ef43b2c4">PUBLISHER</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a2fca4ea09bdfbb7edf9fd0a4a43391d3">publisher_</a></td></tr>
-<tr class="separator:a2fca4ea09bdfbb7edf9fd0a4a43391d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3c31d821eb5629302e6109f1a59dc37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="node__lost__parts_8cpp.html#a59fbe15a44ccf259bfb94512a32d2a84">TIMER</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#ac3c31d821eb5629302e6109f1a59dc37">timer_</a></td></tr>
-<tr class="separator:ac3c31d821eb5629302e6109f1a59dc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc80af1f54184fa21a817a3d651d4c4c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#afc80af1f54184fa21a817a3d651d4c4c">robot_name_curr</a></td></tr>
+<tr class="separator:afc80af1f54184fa21a817a3d651d4c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c7d317b326af32910c5190f2c9a192e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a1c7d317b326af32910c5190f2c9a192e">navigate_curr</a></td></tr>
+<tr class="separator:a1c7d317b326af32910c5190f2c9a192e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee93253a02770023b62dfe4b3faa5baf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#aee93253a02770023b62dfe4b3faa5baf">linear_speed_curr</a></td></tr>
+<tr class="separator:aee93253a02770023b62dfe4b3faa5baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6dc63310da8ee96146c4d8017b02f5a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#af6dc63310da8ee96146c4d8017b02f5a">angular_speed_curr</a></td></tr>
+<tr class="separator:af6dc63310da8ee96146c4d8017b02f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91621572fe10e2e35decb375cf868f82"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a91621572fe10e2e35decb375cf868f82">yaw_curr</a></td></tr>
+<tr class="separator:a91621572fe10e2e35decb375cf868f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa78fffd87f6a50a439f3338900ef60"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a4fa78fffd87f6a50a439f3338900ef60">roll_curr</a></td></tr>
+<tr class="separator:a4fa78fffd87f6a50a439f3338900ef60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed46ce8f64787aee9345266147672224"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#aed46ce8f64787aee9345266147672224">pitch_curr</a></td></tr>
+<tr class="separator:aed46ce8f64787aee9345266147672224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae8ae60fd9225088460a6e9a02e3b8be"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#aae8ae60fd9225088460a6e9a02e3b8be">goal_curr_x</a></td></tr>
+<tr class="separator:aae8ae60fd9225088460a6e9a02e3b8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b943b611289e4af90e8e49d58e1bb21"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a7b943b611289e4af90e8e49d58e1bb21">goal_curr_y</a></td></tr>
+<tr class="separator:a7b943b611289e4af90e8e49d58e1bb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c30eeb74b26c92f195ca352fa04b45b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a7c30eeb74b26c92f195ca352fa04b45b">m_distance_to_goal</a></td></tr>
+<tr class="separator:a7c30eeb74b26c92f195ca352fa04b45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a488277e853f3b2e7a1d582c158297a14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a488277e853f3b2e7a1d582c158297a14">global_move_flag</a> {false}</td></tr>
+<tr class="separator:a488277e853f3b2e7a1d582c158297a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed24b7e41ede206f795a87d8c46a090"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a9ed24b7e41ede206f795a87d8c46a090">obstacle</a></td></tr>
+<tr class="separator:a9ed24b7e41ede206f795a87d8c46a090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d2218feeccaaf6ad06dc616865784c"><td class="memItemLeft" align="right" valign="top">rclcpp::CallbackGroup::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a83d2218feeccaaf6ad06dc616865784c">callback_grp</a></td></tr>
+<tr class="separator:a83d2218feeccaaf6ad06dc616865784c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aeeab64f1bc40da764b5df2e0504152"><td class="memItemLeft" align="right" valign="top">rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a2aeeab64f1bc40da764b5df2e0504152">m_timer</a></td></tr>
+<tr class="separator:a2aeeab64f1bc40da764b5df2e0504152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa186a7699a213b449f6c129c56bfa809"><td class="memItemLeft" align="right" valign="top">rclcpp::Publisher&lt; geometry_msgs::msg::Twist &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#aa186a7699a213b449f6c129c56bfa809">vel_publisher_curr</a></td></tr>
+<tr class="separator:aa186a7699a213b449f6c129c56bfa809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a647cb6c885adf0f99199c758664a6304"><td class="memItemLeft" align="right" valign="top">rclcpp::Publisher&lt; std_msgs::msg::Bool &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a647cb6c885adf0f99199c758664a6304">goal_pub</a></td></tr>
+<tr class="separator:a647cb6c885adf0f99199c758664a6304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f661c7b8e2ab3eb8830e93c2f19a4c7"><td class="memItemLeft" align="right" valign="top">rclcpp::Subscription&lt; nav_msgs::msg::Odometry &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a9f661c7b8e2ab3eb8830e93c2f19a4c7">robot_pose_curr</a></td></tr>
+<tr class="separator:a9f661c7b8e2ab3eb8830e93c2f19a4c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31870532c4347d420726f73c7d215cd8"><td class="memItemLeft" align="right" valign="top">rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a31870532c4347d420726f73c7d215cd8">cam_sub_curr</a></td></tr>
+<tr class="separator:a31870532c4347d420726f73c7d215cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35c891421881bbe56ba8c1f264302e33"><td class="memItemLeft" align="right" valign="top">rclcpp::Subscription&lt; std_msgs::msg::Bool &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a35c891421881bbe56ba8c1f264302e33">subscriber_move_flag</a></td></tr>
+<tr class="separator:a35c891421881bbe56ba8c1f264302e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa62cbad06f09aea3544cab4b88c910"><td class="memItemLeft" align="right" valign="top">rclcpp::Publisher&lt; std_msgs::msg::Bool &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a4aa62cbad06f09aea3544cab4b88c910">common_publisher_</a></td></tr>
+<tr class="separator:a4aa62cbad06f09aea3544cab4b88c910"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41066fbb1d36fb0ae664a2ba9e048ee7"><td class="memItemLeft" align="right" valign="top">rclcpp::Subscription&lt; sensor_msgs::msg::LaserScan &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a41066fbb1d36fb0ae664a2ba9e048ee7">lidar_sub_curr</a></td></tr>
+<tr class="separator:a41066fbb1d36fb0ae664a2ba9e048ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f36bc902ed3c8860cc816bf7dee0dc1"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a4f36bc902ed3c8860cc816bf7dee0dc1">curr_loc</a></td></tr>
+<tr class="separator:a4f36bc902ed3c8860cc816bf7dee0dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a615b3e7c66dcaadb832364b775d49a1c"><td class="memItemLeft" align="right" valign="top">rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotSwarm.html#a615b3e7c66dcaadb832364b775d49a1c">navigate_curr_timer</a></td></tr>
+<tr class="separator:a615b3e7c66dcaadb832364b775d49a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="classRobotSwarm.html" title="The RobotSwarm class represents a ROS 2 node for managing a swarm of robots.">RobotSwarm</a> class represents a ROS 2 node for managing a swarm of robots. </p>
+<div class="textblock"><p>A class representing a robot in a swarm. </p>
+<p>The <a class="el" href="classRobotSwarm.html" title="A class representing a robot in a swarm.">RobotSwarm</a> class inherits from the rclcpp::Node class and provides functionality to control and navigate an individual robot in a swarm. It includes methods for setting goals, moving, and handling sensor data. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a78ba819cc0a7359fc8945342773d2680"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78ba819cc0a7359fc8945342773d2680">&#9670;&nbsp;</a></span>RobotSwarm()</h2>
+<a id="a9f605689183bdeceee1b81c79799d301"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f605689183bdeceee1b81c79799d301">&#9670;&nbsp;</a></span>RobotSwarm()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,6 +205,377 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">RobotSwarm::RobotSwarm </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>node_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>robot_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>navigate</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>linear_speed</em> = <code>1.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angular_speed</em> = <code>0.0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for the <a class="el" href="classRobotSwarm.html" title="A class representing a robot in a swarm.">RobotSwarm</a> class. </p>
+<p>Initializes the <a class="el" href="classRobotSwarm.html" title="A class representing a robot in a swarm.">RobotSwarm</a> with the provided parameters and sets up ROS 2 publishers and subscribers for controlling the robot and receiving sensor data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_name</td><td>Name of the robot's ROS 2 node. </td></tr>
+    <tr><td class="paramname">robot_name</td><td>Name of the robot. </td></tr>
+    <tr><td class="paramname">navigate</td><td>Whether the robot should navigate. </td></tr>
+    <tr><td class="paramname">linear_speed</td><td>Linear speed of the robot. </td></tr>
+    <tr><td class="paramname">angular_speed</td><td>Angular speed of the robot. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_a9f605689183bdeceee1b81c79799d301_cgraph.png" border="0" usemap="#aclassRobotSwarm_a9f605689183bdeceee1b81c79799d301_cgraph" alt=""/></div>
+<map name="aclassRobotSwarm_a9f605689183bdeceee1b81c79799d301_cgraph" id="aclassRobotSwarm_a9f605689183bdeceee1b81c79799d301_cgraph">
+<area shape="rect" title="Constructor for the RobotSwarm class." alt="" coords="5,115,201,141"/>
+<area shape="rect" href="classRobotSwarm.html#a66dbdc120f7a24d41b251b6e0b407daa" title="Callback function for the camera image subscription." alt="" coords="249,5,460,32"/>
+<area shape="rect" href="classRobotSwarm.html#af88bb62100455514e0ba6a3b2de378cb" title="Callback function for the lidar data subscription." alt="" coords="253,56,456,83"/>
+<area shape="rect" href="classRobotSwarm.html#a4c9a4afa4b18f7ca7633daeacb0c7d44" title=" " alt="" coords="264,107,445,149"/>
+<area shape="rect" href="classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="269,173,440,214"/>
+<area shape="rect" href="classRobotSwarm.html#af8855ebac389c703aa7a3c969f3d3422" title="Callback function for the robot&#39;s pose subscription." alt="" coords="262,238,447,279"/>
+<area shape="rect" href="classRobotSwarm.html#a9bdb3f23f485a6b191e1e46e7c826383" title=" " alt="" coords="508,63,703,105"/>
+<area shape="rect" href="classRobotSwarm.html#aae484b2862844fcb76a0e50e3a40c272" title="Calculates the Euclidean distance between two points." alt="" coords="514,129,697,156"/>
+<area shape="rect" href="classRobotSwarm.html#a56446d720292c03567d9a93ad27d2772" title=" " alt="" coords="530,180,681,207"/>
+<area shape="rect" href="classRobotSwarm.html#acffbe43d25420f69d0c2aaa4769192b9" title=" " alt="" coords="535,231,676,257"/>
+<area shape="rect" href="classRobotSwarm.html#a3dd18a2b91423903d898291aa80ef1a7" title="Gets the yaw angle from the robot&#39;s orientation quaternion." alt="" coords="535,281,675,308"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a216c8688a94c36ebf8b29ad7dcb1eccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a216c8688a94c36ebf8b29ad7dcb1eccd">&#9670;&nbsp;</a></span>angle_resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::angle_resize </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9bdb3f23f485a6b191e1e46e7c826383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bdb3f23f485a6b191e1e46e7c826383">&#9670;&nbsp;</a></span>angle_resize_positive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::angle_resize_positive </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_a9bdb3f23f485a6b191e1e46e7c826383_icgraph.png" border="0" usemap="#aclassRobotSwarm_a9bdb3f23f485a6b191e1e46e7c826383_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_a9bdb3f23f485a6b191e1e46e7c826383_icgraph" id="aclassRobotSwarm_a9bdb3f23f485a6b191e1e46e7c826383_icgraph">
+<area shape="rect" title=" " alt="" coords="468,5,663,47"/>
+<area shape="rect" href="classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="249,5,420,47"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aae484b2862844fcb76a0e50e3a40c272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae484b2862844fcb76a0e50e3a40c272">&#9670;&nbsp;</a></span>euclid_dist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::euclid_dist </td>
+          <td>(</td>
+          <td class="paramtype">const std::pair&lt; double, double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::pair&lt; double, double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the Euclidean distance between two points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>First point. </td></tr>
+    <tr><td class="paramname">b</td><td>Second point. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Euclidean distance between points a and b. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_aae484b2862844fcb76a0e50e3a40c272_icgraph.png" border="0" usemap="#aclassRobotSwarm_aae484b2862844fcb76a0e50e3a40c272_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_aae484b2862844fcb76a0e50e3a40c272_icgraph" id="aclassRobotSwarm_aae484b2862844fcb76a0e50e3a40c272_icgraph">
+<area shape="rect" title="Calculates the Euclidean distance between two points." alt="" coords="468,13,651,39"/>
+<area shape="rect" href="classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="249,5,420,47"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a66dbdc120f7a24d41b251b6e0b407daa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66dbdc120f7a24d41b251b6e0b407daa">&#9670;&nbsp;</a></span>imageCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RobotSwarm::imageCallback </td>
+          <td>(</td>
+          <td class="paramtype">const sensor_msgs::msg::Image::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback function for the camera image subscription. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The received Image message containing camera data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_a66dbdc120f7a24d41b251b6e0b407daa_icgraph.png" border="0" usemap="#aclassRobotSwarm_a66dbdc120f7a24d41b251b6e0b407daa_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_a66dbdc120f7a24d41b251b6e0b407daa_icgraph" id="aclassRobotSwarm_a66dbdc120f7a24d41b251b6e0b407daa_icgraph">
+<area shape="rect" title="Callback function for the camera image subscription." alt="" coords="249,5,460,32"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,5,201,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af88bb62100455514e0ba6a3b2de378cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af88bb62100455514e0ba6a3b2de378cb">&#9670;&nbsp;</a></span>lidar_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RobotSwarm::lidar_callback </td>
+          <td>(</td>
+          <td class="paramtype">const sensor_msgs::msg::LaserScan &amp;&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback function for the lidar data subscription. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The received LaserScan message containing lidar data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_af88bb62100455514e0ba6a3b2de378cb_icgraph.png" border="0" usemap="#aclassRobotSwarm_af88bb62100455514e0ba6a3b2de378cb_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_af88bb62100455514e0ba6a3b2de378cb_icgraph" id="aclassRobotSwarm_af88bb62100455514e0ba6a3b2de378cb_icgraph">
+<area shape="rect" title="Callback function for the lidar data subscription." alt="" coords="249,5,452,32"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,5,201,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a56446d720292c03567d9a93ad27d2772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56446d720292c03567d9a93ad27d2772">&#9670;&nbsp;</a></span>move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RobotSwarm::move </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>linear</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angular</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_a56446d720292c03567d9a93ad27d2772_icgraph.png" border="0" usemap="#aclassRobotSwarm_a56446d720292c03567d9a93ad27d2772_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_a56446d720292c03567d9a93ad27d2772_icgraph" id="aclassRobotSwarm_a56446d720292c03567d9a93ad27d2772_icgraph">
+<area shape="rect" title=" " alt="" coords="468,13,619,39"/>
+<area shape="rect" href="classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="249,5,420,47"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4c9a4afa4b18f7ca7633daeacb0c7d44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c9a4afa4b18f7ca7633daeacb0c7d44">&#9670;&nbsp;</a></span>move_flag_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RobotSwarm::move_flag_callback </td>
+          <td>(</td>
+          <td class="paramtype">const std_msgs::msg::Bool::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_a4c9a4afa4b18f7ca7633daeacb0c7d44_icgraph.png" border="0" usemap="#aclassRobotSwarm_a4c9a4afa4b18f7ca7633daeacb0c7d44_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_a4c9a4afa4b18f7ca7633daeacb0c7d44_icgraph" id="aclassRobotSwarm_a4c9a4afa4b18f7ca7633daeacb0c7d44_icgraph">
+<area shape="rect" title=" " alt="" coords="249,5,431,47"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a481ddfabb4481289fa8f24047fc480c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a481ddfabb4481289fa8f24047fc480c1">&#9670;&nbsp;</a></span>navigate_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RobotSwarm::navigate_callback </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -150,23 +588,34 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor for <a class="el" href="classRobotSwarm.html" title="The RobotSwarm class represents a ROS 2 node for managing a swarm of robots.">RobotSwarm</a> class. </p>
-<p>Initializes the <a class="el" href="classRobotSwarm.html" title="The RobotSwarm class represents a ROS 2 node for managing a swarm of robots.">RobotSwarm</a> node, creates a publisher, and sets up a timer with a callback function. </p>
+<p>Callback function for the navigation timer. Controls the robot's movement towards the goal. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classRobotSwarm_a78ba819cc0a7359fc8945342773d2680_cgraph.png" border="0" usemap="#aclassRobotSwarm_a78ba819cc0a7359fc8945342773d2680_cgraph" alt=""/></div>
-<map name="aclassRobotSwarm_a78ba819cc0a7359fc8945342773d2680_cgraph" id="aclassRobotSwarm_a78ba819cc0a7359fc8945342773d2680_cgraph">
-<area shape="rect" title="Constructor for RobotSwarm class." alt="" coords="5,5,201,32"/>
-<area shape="rect" href="classRobotSwarm.html#a7411bbb8c2bcba07e0eebc5af47a5a3b" title="Timer callback function." alt="" coords="249,5,459,32"/>
+<div class="center"><img src="classRobotSwarm_a481ddfabb4481289fa8f24047fc480c1_cgraph.png" border="0" usemap="#aclassRobotSwarm_a481ddfabb4481289fa8f24047fc480c1_cgraph" alt=""/></div>
+<map name="aclassRobotSwarm_a481ddfabb4481289fa8f24047fc480c1_cgraph" id="aclassRobotSwarm_a481ddfabb4481289fa8f24047fc480c1_cgraph">
+<area shape="rect" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="5,115,176,156"/>
+<area shape="rect" href="classRobotSwarm.html#a9bdb3f23f485a6b191e1e46e7c826383" title=" " alt="" coords="224,5,419,47"/>
+<area shape="rect" href="classRobotSwarm.html#aae484b2862844fcb76a0e50e3a40c272" title="Calculates the Euclidean distance between two points." alt="" coords="230,71,413,98"/>
+<area shape="rect" href="classRobotSwarm.html#a56446d720292c03567d9a93ad27d2772" title=" " alt="" coords="246,122,397,149"/>
+<area shape="rect" href="classRobotSwarm.html#acffbe43d25420f69d0c2aaa4769192b9" title=" " alt="" coords="251,173,392,199"/>
+<area shape="rect" href="classRobotSwarm.html#a3dd18a2b91423903d898291aa80ef1a7" title="Gets the yaw angle from the robot&#39;s orientation quaternion." alt="" coords="251,223,391,250"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_a481ddfabb4481289fa8f24047fc480c1_icgraph.png" border="0" usemap="#aclassRobotSwarm_a481ddfabb4481289fa8f24047fc480c1_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_a481ddfabb4481289fa8f24047fc480c1_icgraph" id="aclassRobotSwarm_a481ddfabb4481289fa8f24047fc480c1_icgraph">
+<area shape="rect" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="249,5,420,47"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
 </map>
 </div>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2981473963b37fecebe90ec1539cdad3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2981473963b37fecebe90ec1539cdad3">&#9670;&nbsp;</a></span>AlertPartFound()</h2>
+<a id="af8855ebac389c703aa7a3c969f3d3422"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8855ebac389c703aa7a3c969f3d3422">&#9670;&nbsp;</a></span>robot_pose_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,120 +624,160 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RobotSwarm::AlertPartFound </td>
+          <td class="memname">void RobotSwarm::robot_pose_callback </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const nav_msgs::msg::Odometry &amp;&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Alert when a part is found. </p>
-<p>Placeholder method for alerting when a part is found. Implementation details can be added later. </p>
-
-</div>
-</div>
-<a id="ade833b3e0c5f026fcbdb3a8c400b61ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade833b3e0c5f026fcbdb3a8c400b61ad">&#9670;&nbsp;</a></span>MovotoPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RobotSwarm::MovotoPosition </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Move to a specific position. </p>
-<p>Placeholder method for moving the robot to a specific position. Implementation details can be added later. </p>
-
-</div>
-</div>
-<a id="a9cde04d67142b1171220b848e2edcf38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cde04d67142b1171220b848e2edcf38">&#9670;&nbsp;</a></span>SearchPath()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RobotSwarm::SearchPath </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Search for a path. </p>
-<p>Placeholder method for searching a path for the robot. Implementation details can be added later. </p>
-
-</div>
-</div>
-<a id="a7411bbb8c2bcba07e0eebc5af47a5a3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7411bbb8c2bcba07e0eebc5af47a5a3b">&#9670;&nbsp;</a></span>timer_callback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RobotSwarm::timer_callback </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Timer callback function. </p>
-<p>This function is called at regular intervals by the timer. It creates a STRING message, updates the count_, logs a message, and publishes the message. </p>
+<p>Callback function for the robot's pose subscription. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The received Odometry message containing the robot's pose. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classRobotSwarm_a7411bbb8c2bcba07e0eebc5af47a5a3b_icgraph.png" border="0" usemap="#aclassRobotSwarm_a7411bbb8c2bcba07e0eebc5af47a5a3b_icgraph" alt=""/></div>
-<map name="aclassRobotSwarm_a7411bbb8c2bcba07e0eebc5af47a5a3b_icgraph" id="aclassRobotSwarm_a7411bbb8c2bcba07e0eebc5af47a5a3b_icgraph">
-<area shape="rect" title="Timer callback function." alt="" coords="249,5,459,32"/>
-<area shape="rect" href="classRobotSwarm.html#a78ba819cc0a7359fc8945342773d2680" title="Constructor for RobotSwarm class." alt="" coords="5,5,201,32"/>
+<div class="center"><img src="classRobotSwarm_af8855ebac389c703aa7a3c969f3d3422_icgraph.png" border="0" usemap="#aclassRobotSwarm_af8855ebac389c703aa7a3c969f3d3422_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_af8855ebac389c703aa7a3c969f3d3422_icgraph" id="aclassRobotSwarm_af8855ebac389c703aa7a3c969f3d3422_icgraph">
+<area shape="rect" title="Callback function for the robot&#39;s pose subscription." alt="" coords="249,5,435,47"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a46c864f51fac32345d66234044136054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46c864f51fac32345d66234044136054">&#9670;&nbsp;</a></span>set_goal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RobotSwarm::set_goal </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets a goal for the robot to reach. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>X-coordinate of the goal. </td></tr>
+    <tr><td class="paramname">y</td><td>Y-coordinate of the goal. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acffbe43d25420f69d0c2aaa4769192b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acffbe43d25420f69d0c2aaa4769192b9">&#9670;&nbsp;</a></span>stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RobotSwarm::stop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_acffbe43d25420f69d0c2aaa4769192b9_icgraph.png" border="0" usemap="#aclassRobotSwarm_acffbe43d25420f69d0c2aaa4769192b9_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_acffbe43d25420f69d0c2aaa4769192b9_icgraph" id="aclassRobotSwarm_acffbe43d25420f69d0c2aaa4769192b9_icgraph">
+<area shape="rect" title=" " alt="" coords="468,13,609,39"/>
+<area shape="rect" href="classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="249,5,420,47"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3dd18a2b91423903d898291aa80ef1a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dd18a2b91423903d898291aa80ef1a7">&#9670;&nbsp;</a></span>yaw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::yaw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the yaw angle from the robot's orientation quaternion. </p>
+<dl class="section return"><dt>Returns</dt><dd>Yaw angle in radians. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRobotSwarm_a3dd18a2b91423903d898291aa80ef1a7_icgraph.png" border="0" usemap="#aclassRobotSwarm_a3dd18a2b91423903d898291aa80ef1a7_icgraph" alt=""/></div>
+<map name="aclassRobotSwarm_a3dd18a2b91423903d898291aa80ef1a7_icgraph" id="aclassRobotSwarm_a3dd18a2b91423903d898291aa80ef1a7_icgraph">
+<area shape="rect" title="Gets the yaw angle from the robot&#39;s orientation quaternion." alt="" coords="468,13,608,39"/>
+<area shape="rect" href="classRobotSwarm.html#a481ddfabb4481289fa8f24047fc480c1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="249,5,420,47"/>
+<area shape="rect" href="classRobotSwarm.html#a9f605689183bdeceee1b81c79799d301" title="Constructor for the RobotSwarm class." alt="" coords="5,13,201,39"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab21287bf7cd0b27c58bfb91356f33b89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab21287bf7cd0b27c58bfb91356f33b89">&#9670;&nbsp;</a></span>count_</h2>
+<a id="af6dc63310da8ee96146c4d8017b02f5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6dc63310da8ee96146c4d8017b02f5a">&#9670;&nbsp;</a></span>angular_speed_curr</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -297,7 +786,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t RobotSwarm::count_</td>
+          <td class="memname">double RobotSwarm::angular_speed_curr</td>
         </tr>
       </table>
   </td>
@@ -309,8 +798,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a2fca4ea09bdfbb7edf9fd0a4a43391d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fca4ea09bdfbb7edf9fd0a4a43391d3">&#9670;&nbsp;</a></span>publisher_</h2>
+<a id="a83d2218feeccaaf6ad06dc616865784c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83d2218feeccaaf6ad06dc616865784c">&#9670;&nbsp;</a></span>callback_grp</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,7 +808,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="node__lost__parts_8cpp.html#aedde21d880986a2e47c0b510ef43b2c4">PUBLISHER</a> RobotSwarm::publisher_</td>
+          <td class="memname">rclcpp::CallbackGroup::SharedPtr RobotSwarm::callback_grp</td>
         </tr>
       </table>
   </td>
@@ -331,8 +820,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac3c31d821eb5629302e6109f1a59dc37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3c31d821eb5629302e6109f1a59dc37">&#9670;&nbsp;</a></span>timer_</h2>
+<a id="a31870532c4347d420726f73c7d215cd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31870532c4347d420726f73c7d215cd8">&#9670;&nbsp;</a></span>cam_sub_curr</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -341,7 +830,461 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="node__lost__parts_8cpp.html#a59fbe15a44ccf259bfb94512a32d2a84">TIMER</a> RobotSwarm::timer_</td>
+          <td class="memname">rclcpp::Subscription&lt;sensor_msgs::msg::Image&gt;::SharedPtr RobotSwarm::cam_sub_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4aa62cbad06f09aea3544cab4b88c910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aa62cbad06f09aea3544cab4b88c910">&#9670;&nbsp;</a></span>common_publisher_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rclcpp::Publisher&lt;std_msgs::msg::Bool&gt;::SharedPtr RobotSwarm::common_publisher_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f36bc902ed3c8860cc816bf7dee0dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f36bc902ed3c8860cc816bf7dee0dc1">&#9670;&nbsp;</a></span>curr_loc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;double, double&gt; RobotSwarm::curr_loc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a488277e853f3b2e7a1d582c158297a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a488277e853f3b2e7a1d582c158297a14">&#9670;&nbsp;</a></span>global_move_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RobotSwarm::global_move_flag {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae8ae60fd9225088460a6e9a02e3b8be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae8ae60fd9225088460a6e9a02e3b8be">&#9670;&nbsp;</a></span>goal_curr_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::goal_curr_x</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b943b611289e4af90e8e49d58e1bb21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b943b611289e4af90e8e49d58e1bb21">&#9670;&nbsp;</a></span>goal_curr_y</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::goal_curr_y</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a647cb6c885adf0f99199c758664a6304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a647cb6c885adf0f99199c758664a6304">&#9670;&nbsp;</a></span>goal_pub</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rclcpp::Publisher&lt;std_msgs::msg::Bool&gt;::SharedPtr RobotSwarm::goal_pub</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41066fbb1d36fb0ae664a2ba9e048ee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41066fbb1d36fb0ae664a2ba9e048ee7">&#9670;&nbsp;</a></span>lidar_sub_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rclcpp::Subscription&lt;sensor_msgs::msg::LaserScan&gt;::SharedPtr RobotSwarm::lidar_sub_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee93253a02770023b62dfe4b3faa5baf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee93253a02770023b62dfe4b3faa5baf">&#9670;&nbsp;</a></span>linear_speed_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::linear_speed_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c30eeb74b26c92f195ca352fa04b45b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c30eeb74b26c92f195ca352fa04b45b">&#9670;&nbsp;</a></span>m_distance_to_goal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::m_distance_to_goal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7853933f9ae7beb9b70669896afa0c44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7853933f9ae7beb9b70669896afa0c44">&#9670;&nbsp;</a></span>m_orientation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">geometry_msgs::msg::Quaternion RobotSwarm::m_orientation</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2aeeab64f1bc40da764b5df2e0504152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aeeab64f1bc40da764b5df2e0504152">&#9670;&nbsp;</a></span>m_timer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rclcpp::TimerBase::SharedPtr RobotSwarm::m_timer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c7d317b326af32910c5190f2c9a192e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c7d317b326af32910c5190f2c9a192e">&#9670;&nbsp;</a></span>navigate_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RobotSwarm::navigate_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a615b3e7c66dcaadb832364b775d49a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a615b3e7c66dcaadb832364b775d49a1c">&#9670;&nbsp;</a></span>navigate_curr_timer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rclcpp::TimerBase::SharedPtr RobotSwarm::navigate_curr_timer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ed24b7e41ede206f795a87d8c46a090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ed24b7e41ede206f795a87d8c46a090">&#9670;&nbsp;</a></span>obstacle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RobotSwarm::obstacle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed46ce8f64787aee9345266147672224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed46ce8f64787aee9345266147672224">&#9670;&nbsp;</a></span>pitch_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::pitch_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc80af1f54184fa21a817a3d651d4c4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc80af1f54184fa21a817a3d651d4c4c">&#9670;&nbsp;</a></span>robot_name_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string RobotSwarm::robot_name_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f661c7b8e2ab3eb8830e93c2f19a4c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f661c7b8e2ab3eb8830e93c2f19a4c7">&#9670;&nbsp;</a></span>robot_pose_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rclcpp::Subscription&lt;nav_msgs::msg::Odometry&gt;::SharedPtr RobotSwarm::robot_pose_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fa78fffd87f6a50a439f3338900ef60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fa78fffd87f6a50a439f3338900ef60">&#9670;&nbsp;</a></span>roll_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::roll_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35c891421881bbe56ba8c1f264302e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35c891421881bbe56ba8c1f264302e33">&#9670;&nbsp;</a></span>subscriber_move_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rclcpp::Subscription&lt;std_msgs::msg::Bool&gt;::SharedPtr RobotSwarm::subscriber_move_flag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa186a7699a213b449f6c129c56bfa809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa186a7699a213b449f6c129c56bfa809">&#9670;&nbsp;</a></span>vel_publisher_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rclcpp::Publisher&lt;geometry_msgs::msg::Twist&gt;::SharedPtr RobotSwarm::vel_publisher_curr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91621572fe10e2e35decb375cf868f82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91621572fe10e2e35decb375cf868f82">&#9670;&nbsp;</a></span>yaw_curr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double RobotSwarm::yaw_curr</td>
         </tr>
       </table>
   </td>

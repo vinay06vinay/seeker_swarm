@@ -1,0 +1,8 @@
+<map id="RobotSwarm::navigate_callback" name="RobotSwarm::navigate_callback">
+<area shape="rect" id="node1" title="Callback function for the navigation timer. Controls the robot&#39;s movement towards the goal." alt="" coords="5,115,176,156"/>
+<area shape="rect" id="node2" href="$classRobotSwarm.html#a9bdb3f23f485a6b191e1e46e7c826383" title=" " alt="" coords="224,5,419,47"/>
+<area shape="rect" id="node3" href="$classRobotSwarm.html#aae484b2862844fcb76a0e50e3a40c272" title="Calculates the Euclidean distance between two points." alt="" coords="230,71,413,98"/>
+<area shape="rect" id="node4" href="$classRobotSwarm.html#a56446d720292c03567d9a93ad27d2772" title=" " alt="" coords="246,122,397,149"/>
+<area shape="rect" id="node5" href="$classRobotSwarm.html#acffbe43d25420f69d0c2aaa4769192b9" title=" " alt="" coords="251,173,392,199"/>
+<area shape="rect" id="node6" href="$classRobotSwarm.html#a3dd18a2b91423903d898291aa80ef1a7" title="Gets the yaw angle from the robot&#39;s orientation quaternion." alt="" coords="251,223,391,250"/>
+</map>

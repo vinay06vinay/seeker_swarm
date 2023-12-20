@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robotswarm_24',['RobotSwarm',['../classRobotSwarm.html',1,'']]]
+  ['swarmmaster_56',['SwarmMaster',['../classSwarmMaster.html',1,'']]]
 ];

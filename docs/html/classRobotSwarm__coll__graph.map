@@ -1,6 +1,11 @@
 <map id="RobotSwarm" name="RobotSwarm">
-<area shape="rect" id="node1" title="The RobotSwarm class represents a ROS 2 node for managing a swarm of robots." alt="" coords="91,160,233,296"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,108,83"/>
-<area shape="rect" id="node3" title=" " alt="" coords="132,5,192,83"/>
-<area shape="rect" id="node4" title=" " alt="" coords="217,5,302,83"/>
+<area shape="rect" id="node1" title="A class representing a robot in a swarm." alt="" coords="403,433,591,687"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,147,108,224"/>
+<area shape="rect" id="node3" title=" " alt="" coords="133,147,199,224"/>
+<area shape="rect" id="node4" title=" " alt="" coords="223,147,397,224"/>
+<area shape="rect" id="node5" title=" " alt="" coords="421,147,516,224"/>
+<area shape="rect" id="node6" title=" " alt="" coords="541,147,591,224"/>
+<area shape="rect" id="node7" title=" " alt="" coords="679,147,765,224"/>
+<area shape="rect" id="node8" title=" " alt="" coords="653,5,791,97"/>
+<area shape="rect" id="node9" title=" " alt="" coords="914,147,999,224"/>
 </map>

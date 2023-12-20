@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['count_5f_1',['count_',['../classLostParts.html#a2a38a12af166b94fec8512d4cf82a37f',1,'LostParts::count_()'],['../classRobotSwarm.html#ab21287bf7cd0b27c58bfb91356f33b89',1,'RobotSwarm::count_()'],['../classWarehouseHead.html#a19d9f9b3e2a38f9070640ad6a71d851d',1,'WarehouseHead::count_()']]]
+  ['callback_5fgrp_3',['callback_grp',['../classRobotSwarm.html#a83d2218feeccaaf6ad06dc616865784c',1,'RobotSwarm']]],
+  ['cam_5fsub_5fcurr_4',['cam_sub_curr',['../classRobotSwarm.html#a31870532c4347d420726f73c7d215cd8',1,'RobotSwarm']]],
+  ['common_5fpublisher_5f_5',['common_publisher_',['../classRobotSwarm.html#a4aa62cbad06f09aea3544cab4b88c910',1,'RobotSwarm']]],
+  ['curr_5floc_6',['curr_loc',['../classRobotSwarm.html#a4f36bc902ed3c8860cc816bf7dee0dc1',1,'RobotSwarm']]]
 ];
