@@ -22,7 +22,7 @@ To implement the module to create a collaborative obstacle free environment for 
 ## Activity Diagram
 
 <p align="center">
-<img width="30%" alt="Activity Diagram" src="UML/Phase1/activity_diagram_initial.png">
+<img width="40%" alt="Activity Diagram" src="UML/Phase2/activity_diagram_revised.png">
 </p>
 
 ## Team 
@@ -45,6 +45,25 @@ The phase is implemented using Agile Iterative Process with a 2 week sprint and 
 1. [AIP Sheet](https://docs.google.com/spreadsheets/d/1NuIYBbttIKkYBfBp62UK6V-b4JHCreupMbSnzMCKfyM/edit?usp=sharing)
 2. [Sprint Meeting Notes](https://docs.google.com/document/d/1hmF4FdUW7u_yZcx7FMOXFj-bEJ_aklQrRSQUA3DLxTc/edit?usp=sharing)
 
+## Phase 2:
+
+The Phase 2 consisted of implementation of all classes and making the swarm robots work. The details regarding the phase 2 process and implementation are clearly explained through a video which can be accessed through this [link](https://drive.google.com/drive/folders/1owMT9tn0x96qVgPtxg-muGZPfwGxZB40?usp=sharing)
+- The Revised UML Diagrams are found [here](/UML/Phase2/UML_Final.pdf)
+
+#### Software Practices: 
+The phase is implemented using Agile Iterative Process with a 3 week sprint and also following pair programming. Please find the links below for detailed tasks:
+1. [AIP Sheet](https://docs.google.com/spreadsheets/d/1NuIYBbttIKkYBfBp62UK6V-b4JHCreupMbSnzMCKfyM/edit?usp=sharing)
+2. [Sprint Meeting Notes](https://docs.google.com/document/d/1hmF4FdUW7u_yZcx7FMOXFj-bEJ_aklQrRSQUA3DLxTc/edit?usp=sharing)
+
+
+## Deliverables
+- Project: Seeker Swarm
+- Ros2 Package and build procedure required
+- Overview of prosposed work, including timeline, results
+- UML and class activity diagrams
+- Code Coverage using CodeCov
+- Detailed Doxygen Documentation
+- Cpplint and Cppcheck error optimisation
 
 ## Code Build Procedure
 Follow the below procedure to download the code and start building
@@ -65,6 +84,17 @@ colcon build --packages-select SeekerSwarm
 # After successfull build source the package
 . install/setup.bash
 ```
+## Execution of the Launch File and Node
+```bash
+# Terminal 1: Run below launch file which spawns 10 turtlebots in the environment
+ros2 launch seeker_swarm launch.py
+# Terminal 2 : Run below node for each robot spawned to start searching for the object
+ros2 run seeker_swarm main_f
+```
+
+## Results: 
+The swarm robots are successfully able to find the object through obstacle avoidance for each robot in warehouse. The result can be observed below:
+
 
 ## Method to Run Unit Tests
 ```bash
@@ -79,16 +109,17 @@ colcon build --packages-select SeekerSwarm
 ## Method to Generate Coverage Reports
 ``` bash
 ros2 run SeekerSwarm generate_coverage_report.bash
+#Find the coverage report in ./build/seeker_swarm/test_coverage/index.html
 ```
 ### CppCheck & CppLint
 ```bash
-# Use the below command for cpp check by moving to directory beginner_tutorials
+# Use the below command for cpp check by moving to directory Seeker_Swarm
 cppcheck --enable=all --std=c++17 --suppress=missingIncludeSystem $( find . -name *.cpp | grep -vE -e "^(./build/|./install/|./log/)" ) --check-config  &> results/cppcheck.txt
 
-# Use the below command for cpp lint by moving to directory beginner_tutorials 
+# Use the below command for cpp lint by moving to directory Seeker_Swarm 
 cpplint  --filter=-build/c++11,+build/c++17,-build/namespaces,-build/include_order $( find . -name *.cpp | grep -vE -e "^(./build/|./install/|./log/)" ) &> results/cpplint.txt 
 
-## The results of both are present in results folder insider beginner_tutorials directory
+## The results of both are present in results folder insider Seeker_Swarm directory
 ```
 
 ## LICENSE

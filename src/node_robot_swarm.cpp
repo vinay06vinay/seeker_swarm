@@ -237,7 +237,7 @@ class RobotSwarm : public rclcpp::Node {
     if (!navigate_curr) return;
 
     std::pair<double, double> goal{goal_curr_x, goal_curr_y};
-    // double distance_to_goal = euclid_dist(curr_loc, goal);
+    double distance_to_goal = euclid_dist(curr_loc, goal);
 
     if (distance_to_goal > 0.1) {
       distance_to_goal = euclid_dist(curr_loc, goal);
@@ -245,7 +245,6 @@ class RobotSwarm : public rclcpp::Node {
                                         goal_curr_x - curr_loc.first);
 
       if (angle_to_goal < 0)
-        // angle_to_goal = 2 * M_PI + angle_to_goal;
         angle_to_goal = angle_resize_positive(angle_to_goal);
 
       // angle to rotate to face the goal
@@ -253,14 +252,9 @@ class RobotSwarm : public rclcpp::Node {
 
       if (w > M_PI) {
         w = w - 2 * M_PI;
-        // w = m_angle_resize_positive(w);
       }
 
-      // proportional control for linear velocity
-      // double velocity_x = std::min(Kv * distance_to_goal, linear_speed_curr);
       double velocity_x = linear_speed_curr;
-      // proportional control for angular velocity
-      // double angular_vel_z = Kh * w;
       double angular_vel_z = w;
       if (this->obstacle == false) {
         if (angular_vel_z > 0)
@@ -343,14 +337,6 @@ class RobotSwarm : public rclcpp::Node {
           // want to consider the first contour break;
         }
       }
-      // Check if any red pixels are present
-      // if (cv::countNonZero(red_mask) > 0)
-      // {
-      //     RCLCPP_INFO(this->get_logger(), "Red object detected!");
-      //     std_msgs::msg::String msg;
-      //     // msg.data = "Red object detected!";
-      //     // red_publisher_->publish(msg);
-      // }
     } catch (cv_bridge::Exception &e) {
       RCLCPP_ERROR(this->get_logger(), "cv_bridge exception: %s", e.what());
       return;
@@ -370,7 +356,7 @@ class RobotSwarm : public rclcpp::Node {
   double pitch_curr;
   double goal_curr_x;
   double goal_curr_y;
-  double m_distance_to_goal;
+  // double m_distance_to_goal;
   bool global_move_flag{false};
   bool obstacle;
 
