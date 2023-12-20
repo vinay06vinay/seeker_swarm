@@ -11,12 +11,8 @@
  */
 #pragma once
 
-#include "tf2/LinearMath/Matrix3x3.h"
-#include "tf2/LinearMath/Quaternion.h"
-#include "tf2/exceptions.h"
-#include "tf2_ros/buffer.h"
-#include "tf2_ros/transform_listener.h"
 #include <cv_bridge/cv_bridge.h>
+
 #include <geometry_msgs/msg/quaternion.hpp>
 #include <geometry_msgs/msg/transform_stamped.hpp>
 #include <geometry_msgs/msg/twist.hpp>
@@ -31,36 +27,50 @@
 #include <string>
 #include <utility>
 
+#include "tf2/LinearMath/Matrix3x3.h"
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2/exceptions.h"
+#include "tf2_ros/buffer.h"
+#include "tf2_ros/transform_listener.h"
+
 using std::placeholders::_1;
 
 /**
  * @class RobotSwarm
  * @brief A class representing a robot in a swarm.
  *
- * The RobotSwarm class inherits from the rclcpp::Node class and provides functionality to control and navigate
- * an individual robot in a swarm. It includes methods for setting goals, moving, and handling sensor data.
+ * The RobotSwarm class inherits from the rclcpp::Node class and provides
+ * functionality to control and navigate an individual robot in a swarm. It
+ * includes methods for setting goals, moving, and handling sensor data.
  */
 class RobotSwarm : public rclcpp::Node {
-public:
-/**
-     * @brief Constructor for the RobotSwarm class.
-     *
-     * Initializes the RobotSwarm with the provided parameters and sets up ROS 2 publishers and subscribers for
-     * controlling the robot and receiving sensor data.
-     *
-     * @param node_name Name of the robot's ROS 2 node.
-     * @param robot_name Name of the robot.
-     * @param navigate Whether the robot should navigate.
-     * @param linear_speed Linear speed of the robot.
-     * @param angular_speed Angular speed of the robot.
-     */
-  RobotSwarm(std::string node_name, std::string robot_name,
+ public:
+  /**
+   * @brief Constructor for the RobotSwarm class.
+   *
+   * Initializes the RobotSwarm with the provided parameters and sets up ROS 2
+   * publishers and subscribers for controlling the robot and receiving sensor
+   * data.
+   *
+   * @param node_name Name of the robot's ROS 2 node.
+   * @param robot_name Name of the robot.
+   * @param navigate Whether the robot should navigate.
+   * @param linear_speed Linear speed of the robot.
+   * @param angular_speed Angular speed of the robot.
+   */
+  RobotSwarm(const std::string& node_name, const std::string& robot_name,
              bool navigate = false, double linear_speed = 1.0,
              double angular_speed = 0.0)
-      : Node(node_name), robot_name_curr{robot_name}, navigate_curr{navigate},
-        linear_speed_curr{linear_speed}, angular_speed_curr{angular_speed},
-        roll_curr{0}, pitch_curr{0}, yaw_curr{0}, goal_curr_x{0.0}, goal_curr_y{
-                                                                        0.0} {
+      : Node(node_name),
+        robot_name_curr{robot_name},
+        navigate_curr{navigate},
+        linear_speed_curr{linear_speed},
+        angular_speed_curr{angular_speed},
+        roll_curr{0},
+        pitch_curr{0},
+        yaw_curr{0},
+        goal_curr_x{0.0},
+        goal_curr_y{0.0} {
     auto current_location = std::make_pair(3.0, 0.0);
     curr_loc = current_location;
     callback_grp = this->create_callback_group(
@@ -108,12 +118,12 @@ public:
     }
   }
 
-/**
-     * @brief Sets a goal for the robot to reach.
-     *
-     * @param x X-coordinate of the goal.
-     * @param y Y-coordinate of the goal.
-     */
+  /**
+   * @brief Sets a goal for the robot to reach.
+   *
+   * @param x X-coordinate of the goal.
+   * @param y Y-coordinate of the goal.
+   */
   void set_goal(double x, double y) {
     navigate_curr = true;
     goal_curr_x = x;
@@ -123,11 +133,11 @@ public:
                                                << goal_curr_y << "]");
   }
 
- /**
-     * @brief Callback function for the robot's pose subscription.
-     *
-     * @param msg The received Odometry message containing the robot's pose.
-     */
+  /**
+   * @brief Callback function for the robot's pose subscription.
+   *
+   * @param msg The received Odometry message containing the robot's pose.
+   */
   void robot_pose_callback(const nav_msgs::msg::Odometry &msg) {
     curr_loc.first = msg.pose.pose.position.x;
     curr_loc.second = msg.pose.pose.position.y;
@@ -136,16 +146,15 @@ public:
 
   double angle_resize_positive(double angle) {
     const double result = fmod(angle, 2.0 * M_PI);
-    if (result < 0)
-      return result + 2.0 * M_PI;
+    if (result < 0) return result + 2.0 * M_PI;
     return result;
   }
 
- /**
-     * @brief Callback function for the lidar data subscription.
-     *
-     * @param msg The received LaserScan message containing lidar data.
-     */
+  /**
+   * @brief Callback function for the lidar data subscription.
+   *
+   * @param msg The received LaserScan message containing lidar data.
+   */
   void lidar_callback(const sensor_msgs::msg::LaserScan &msg) {
     // if (msg.header.stamp.sec == 0) {
     //   return;
@@ -170,23 +179,23 @@ public:
     }
   }
 
- /**
-     * @brief Calculates the Euclidean distance between two points.
-     *
-     * @param a First point.
-     * @param b Second point.
-     * @return Euclidean distance between points a and b.
-     */
+  /**
+   * @brief Calculates the Euclidean distance between two points.
+   *
+   * @param a First point.
+   * @param b Second point.
+   * @return Euclidean distance between points a and b.
+   */
   double euclid_dist(const std::pair<double, double> &a,
                      const std::pair<double, double> &b) {
     return sqrt(pow(b.first - a.first, 2) + pow(b.second - a.second, 2));
   }
 
-/**
-     * @brief Gets the yaw angle from the robot's orientation quaternion.
-     *
-     * @return Yaw angle in radians.
-     */
+  /**
+   * @brief Gets the yaw angle from the robot's orientation quaternion.
+   *
+   * @return Yaw angle in radians.
+   */
   double yaw() {
     tf2::Quaternion q(m_orientation.x, m_orientation.y, m_orientation.z,
                       m_orientation.w);
@@ -198,8 +207,7 @@ public:
   }
   double angle_resize(double angle) {
     const double result = fmod(angle + M_PI, 2.0 * M_PI);
-    if (result <= 0.0)
-      return result + M_PI;
+    if (result <= 0.0) return result + M_PI;
     return result - M_PI;
   }
 
@@ -221,16 +229,15 @@ public:
     goal_pub->publish(goal_reached_msg);
   }
 
- /**
-     * @brief Callback function for the navigation timer.
-     *        Controls the robot's movement towards the goal.
-     */
+  /**
+   * @brief Callback function for the navigation timer.
+   *        Controls the robot's movement towards the goal.
+   */
   void navigate_callback() {
-    if (!navigate_curr)
-      return;
+    if (!navigate_curr) return;
 
     std::pair<double, double> goal{goal_curr_x, goal_curr_y};
-    double distance_to_goal = euclid_dist(curr_loc, goal);
+    // double distance_to_goal = euclid_dist(curr_loc, goal);
 
     if (distance_to_goal > 0.1) {
       distance_to_goal = euclid_dist(curr_loc, goal);
@@ -277,11 +284,11 @@ public:
     }
   }
 
-/**
-     * @brief Callback function for the camera image subscription.
-     *
-     * @param msg The received Image message containing camera data.
-     */
+  /**
+   * @brief Callback function for the camera image subscription.
+   *
+   * @param msg The received Image message containing camera data.
+   */
   void imageCallback(const sensor_msgs::msg::Image::SharedPtr msg) {
     cv_bridge::CvImagePtr cv_ptr;
 
@@ -306,7 +313,7 @@ public:
         double area = cv::contourArea(contour);
 
         // Set your desired contour area threshold
-        double contourAreaThreshold = 50000.0; // Adjust as needed
+        double contourAreaThreshold = 50000.0;  // Adjust as needed
 
         // Check if the contour area exceeds the threshold
         if (area > contourAreaThreshold) {
@@ -352,7 +359,7 @@ public:
 
   geometry_msgs::msg::Quaternion m_orientation;
 
-private:
+ private:
   // attributes
   std::string robot_name_curr;
   bool navigate_curr;
@@ -380,3 +387,4 @@ private:
   //   geometry_msgs::msg::Quaternion m_orientation;
   rclcpp::TimerBase::SharedPtr navigate_curr_timer;
 };
+

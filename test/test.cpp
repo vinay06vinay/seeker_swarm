@@ -10,11 +10,13 @@
  *
  */
 #include <gtest/gtest.h>
-#include "../src/node_robot_swarm.cpp"  
+
+#include <nav_msgs/msg/odometry.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
-#include <sensor_msgs/msg/laser_scan.hpp> 
-#include <nav_msgs/msg/odometry.hpp>
+#include <sensor_msgs/msg/laser_scan.hpp>
+
+#include "../src/node_robot_swarm.cpp"
 
 class RobotTest : public testing::Test {
  protected:
@@ -49,7 +51,6 @@ TEST_F(RobotTest, robot_initialization) {
   EXPECT_EQ(1, 1);
 }
 
-
 TEST_F(RobotTest, count_testing_publishers) {
   int nodes = 5;
   int pub_count = 0;
@@ -71,7 +72,6 @@ TEST_F(RobotTest, count_testing_publishers) {
   }
   EXPECT_EQ(nodes, pub_count);
 }
-
 
 TEST_F(RobotTest, count_testing_subscribers) {
   int nodes = 10;
@@ -158,7 +158,8 @@ TEST_F(RobotTest, image_callback_test) {
   auto r_namespace = "robot_" + std::to_string(1);
   auto nodename = "robot_" + std::to_string(1) + "_controller";
   robot = std::make_shared<RobotSwarm>(nodename, r_namespace);
-  sensor_msgs::msg::Image::SharedPtr test_image_msg = std::make_shared<sensor_msgs::msg::Image>();
+  sensor_msgs::msg::Image::SharedPtr test_image_msg =
+      std::make_shared<sensor_msgs::msg::Image>();
   robot->imageCallback(test_image_msg);
   EXPECT_EQ(2.5, 2.5);
 }
