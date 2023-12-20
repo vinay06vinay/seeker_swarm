@@ -34,7 +34,7 @@ name: Run Unit Test and Upload Coverage Report
 on:
   # Triggered whenever push to main 
   push:
-    branches: [ "main" ,"phase1" ]
+    branches: [ "main" ,"phase1","phase2" ]
 
   # Triggered whenever a pull request is created on main
   pull_request:
@@ -75,7 +75,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          files: ${{github.workspace}}/build/test_coverage_merged.info
+          files: ${{github.workspace}}/build/test_coverage.info
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)      
           

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.14)
 project(seeker_swarm)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -36,16 +36,42 @@ endif()
 
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
-  ament_add_gtest(${PROJECT_NAME}_test test/test.cpp)
-  target_include_directories(${PROJECT_NAME}_test PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
-  )
-  ament_target_dependencies(${PROJECT_NAME}_test
-  tf2 tf2_ros rclcpp std_msgs sensor_msgs geometry_msgs nav_msgs cv_bridge image_transport
-  )
-  # target_link_libraries(${PROJECT_NAME}_test my_model)
+  find_package(ament_lint_auto REQUIRED)
+
+  # the following lines skip linters
+  set(ament_cmake_cppcheck_FOUND TRUE)
+  set(ament_cmake_copyright_FOUND TRUE)
+  set(ament_cmake_cpplint_FOUND TRUE)
+  set(ament_cmake_flake8_FOUND TRUE)
+  set(ament_cmake_uncrustify_FOUND TRUE)
+  set(ament_cmake_xmllint_FOUND TRUE)
+  set(ament_cmake_lint_cmake_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+
+  ament_lint_auto_find_test_dependencies()
+  set(TESTFILES
+    test/test.cpp
+    src/node_robot_swarm.cpp
+    )
+  ament_add_gtest(test_${PROJECT_NAME} ${TESTFILES})
+  ament_target_dependencies(test_${PROJECT_NAME} tf2 tf2_ros rclcpp std_msgs sensor_msgs geometry_msgs nav_msgs cv_bridge image_transport)
+
+  install(TARGETS
+    test_${PROJECT_NAME}
+    DESTINATION lib/${PROJECT_NAME})
 endif()
+# if(BUILD_TESTING)
+#   find_package(ament_cmake_gtest REQUIRED)
+#   ament_add_gtest(${PROJECT_NAME}_test test/test.cpp)
+#   target_include_directories(${PROJECT_NAME}_test PUBLIC
+#     # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#     # $<INSTALL_INTERFACE:include>
+#   )
+#   ament_target_dependencies(${PROJECT_NAME}_test
+#   tf2 tf2_ros rclcpp std_msgs sensor_msgs geometry_msgs nav_msgs cv_bridge image_transport
+#   )
+#   # target_link_libraries(${PROJECT_NAME}_test my_model)
+# endif()
 
 ###################################################
 # Create the compilation database for clangd and move it out of the build dir.
