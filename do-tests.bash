@@ -43,7 +43,7 @@ colcon test-result --test-result-base build/seeker_swarm
 ## 4.2 my_controller:
 ros2 run seeker_swarm generate_coverage_report.bash
 MY_CONTROLLER_COVERAGE_INFO=./build/seeker_swarm/test_coverage.info
-MY_SEEKER_SWARM_COVERAGE_INFO = ./build/seeker_swarm/test_coverage
+MY_SEEKER_SWARM_COVERAGE_INFO = ./build/seeker_swarm//test_coverage
 open $MY_SEEKER_SWARM_COVERAGE_INFO/index.html || true
 
 
