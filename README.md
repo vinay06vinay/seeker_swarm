@@ -1,5 +1,5 @@
 # Seeker Swarm
-[![Coverage Report](https://codecov.io/gh/vinay06vinay/SeekerSwarm/branch/phase1/graph/badge.svg)](https://codecov.io/gh/vinay06vinay/SeekerSwarm)
+[![Coverage Report](https://codecov.io/gh/vinay06vinay/SeekerSwarm/branch/phase2/graph/badge.svg)](https://codecov.io/gh/vinay06vinay/SeekerSwarm)
 [![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Build Status](https://github.com/vinay06vinay/SeekerSwarm/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)](https://github.com/vinay06vinay/SeekerSwarm/actions/workflows/run-unit-test-and-upload-codecov.yml)
 
