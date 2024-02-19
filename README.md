@@ -84,7 +84,7 @@ colcon build --packages-select SeekerSwarm
 # After successfull build source the package
 . install/setup.bash
 ```
-## Execution of the Launch File and Node
+### Execution of the Launch File and Node
 ```bash
 # Terminal 1: Run below launch file which spawns 10 turtlebots in the environment
 ros2 launch seeker_swarm launch.py
@@ -92,13 +92,13 @@ ros2 launch seeker_swarm launch.py
 ros2 run seeker_swarm main_f
 ```
 
-## Results: 
+### Results: 
 The swarm robots are successfully able to find the object through obstacle avoidance for each robot in warehouse. The result can be observed below. You can also access through the link -> [here](https://drive.google.com/file/d/1T3U6oOmbCpfKkResCB_Wt4KxFtK9ujzG/view?usp=sharing)
 <p align="center">
 <img width="75%" alt="Result Video" src="results/final_result.gif">
 </p>
 
-## Method to Run Unit Tests
+### Method to Run Unit Tests
 ```bash
 # How to build for tests (unit test and integration test)
   rm -rf build/ install/
@@ -108,7 +108,7 @@ The swarm robots are successfully able to find the object through obstacle avoid
   colcon test
 ```
 
-## Method to Generate Coverage Reports
+### Method to Generate Coverage Reports
 ``` bash
 ros2 run SeekerSwarm generate_coverage_report.bash
 #Find the coverage report in ./build/seeker_swarm/test_coverage/index.html
@@ -124,7 +124,7 @@ cpplint  --filter=-build/c++11,+build/c++17,-build/namespaces,-build/include_ord
 ## The results of both are present in results folder insider Seeker_Swarm directory
 ```
 
-## LICENSE
+### LICENSE
 
 This project is open source and is released under the Apache License 2.0. You are free to use, modify, and distribute the code in accordance with the terms of the Apache License 2.0.
 
